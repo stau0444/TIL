@@ -1,24 +1,39 @@
 import LogoText from '../component/LogoText';
-import ThingsDetail from '../component/ThingsDetail';
-import ThingsList from '../component/ThingsList';
 import { Grid, styled } from '@material-ui/core';
+import ThingsList from '../component/list/ThingsList';
+import ThingsDetail from '../component/detail/ThingsDetail';
+import { useState } from 'react';
+import CustomModal from '../component/modal/CustomModal';
 
 
  const  HomeContainer = styled(Grid)({
-    transition: 'all 1s',
-    width: '100%',
-    height: '100%',
     display: 'flex',
     alignItems:'center',
     justifyContent:'center',
-    padding:'20px'
+    padding:'20px',
+    position: 'relative'
 });
 
 export default function Home() {
+    const [isModalOpen,setIsModalOpen] = useState({mode:"",isOpen:false});
+    const handleModalOpen = (props) =>{
+        if(props === "sign-up" || props === "find-pwd" || props === "find-id"){
+            setIsModalOpen({mode:props,isOpen:isModalOpen.isOpen?true:false}); 
+            return;   
+        }
+        setIsModalOpen({mode:props,isOpen:isModalOpen.isOpen?false:true});
+    }
     return(
+        
         <HomeContainer container >
+            {
+            isModalOpen.isOpen?
+                <CustomModal sx={{display:isModalOpen.isOpen?"block":"none"}} mode={isModalOpen.mode} handleModalOpen={handleModalOpen}/>
+            :
+            ""
+            }
             <LogoText/>
-            <ThingsList/>
+            <ThingsList handleModalOpen={handleModalOpen}/>
             <ThingsDetail/>
         </HomeContainer>
     );

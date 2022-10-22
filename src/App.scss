@@ -1,9 +1,32 @@
 .App {
-  width: 100%;
-  height: 100%;
   transition: all 0.4s ease-out;
+  font-family:'NanumSquare' , san-serif;
 }
 
+@keyframes swing-in-bottom-bck {
+  0% {
+    -webkit-transform: rotateX(-70deg);
+            transform: rotateX(-70deg);
+    -webkit-transform-origin: bottom;
+            transform-origin: bottom;
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+    -webkit-transform-origin: bottom;
+            transform-origin: bottom;
+    opacity: 1;
+  }
+}
+@keyframes list-margin {
+  from {
+    margin-left: 0px;
+  }
+  to{
+    margin-left: 10px;
+  }
+}
 @keyframes modal {
   from {
     opacity: 0;
@@ -12,12 +35,56 @@
     opacity: 1;
   }
 }
+@keyframes modal1 {
+  from {
+    opacity: 0;
+  }
+  to{
+    opacity: 1.1;
+  }
+}
 @keyframes modalSpin {
   0% {
     transform: rotate(0deg);
   }
   100%{
     transform: rotate(90deg);
+  }
+}
+
+
+@keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shadow-pop-tr {
+  0% {
+
+    text-shadow:0px 0px #f3f346;
+  }
+
+  100% {
+    text-shadow:7px 0px #f3f346;
+  }
+}
+
+@keyframes shadow-pop-tr2 {
+  0% {
+
+    text-shadow:0px 0px #f3f346;
+  }
+
+  100% {
+    text-shadow:7px 0px #f3f346;
   }
 }
 

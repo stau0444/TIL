@@ -1,20 +1,18 @@
 import {Grid,styled } from '@material-ui/core';
 import ThingsListBody from './ThingListBody';
 import UserForm from './UserForm';
-import { useState } from 'react';
-import CategoryUpdateModal from './CategoryUpdateModal';
+
 
 
 
 const ThingsListGrid = styled(Grid)({
-    
 });
 
 
 const ThingsListBox= styled('div')({
     margin:'0px auto',
-    maxWidth:'410px',
-    minWidth:'410px',
+    maxWidth:'400px',
+    minWidth:'400px',
    padding: '14px',
    borderRadius:'20px',
    background: '#eff0e5',
@@ -24,19 +22,11 @@ const ThingsListBox= styled('div')({
 })
 
 
-export default function ThingsList() {
-    const [isModalOpen,setIsModalOpen] = useState(false);
-    const handleModalOpen = () =>{
-        setIsModalOpen(isModalOpen?false:true);
-    }
+export default function ThingsList({handleModalOpen}) {
+    
     return(
         <>
-            {
-                isModalOpen?
-                    <CategoryUpdateModal handleModalOpen={handleModalOpen}/>
-                :
-                ""
-            }
+            
             <ThingsListGrid item xs={12} lg={4}>
                     <UserForm handleModalOpen={handleModalOpen}/>
                     <ThingsListBox>

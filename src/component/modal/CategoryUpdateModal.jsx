@@ -1,60 +1,24 @@
 
-import { styled } from '@material-ui/core';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { useRef, useState } from 'react';
+import { styled, Button, Typography } from '@mui/material';
+import { ModalContent, ModalCloseBtnBox, ModalCloseBtn, InputBox, UserInput } from '../../modal';
 
-const ModalBackground=styled('div')({
-    width: '100%',
-    height: '400%',
-    background: '#423b3b7b',
-    zIndex:'0',
-    display: 'flex',
-    alignItems:'center',
-    justifyContent:'center',
-    position:'absolute'
-})
 
-const UpdateModal=styled('div')({
-    width: '400px',
-    height: '450px',
-    position: 'sticky',
-    top: '100px',
-    background: 'white',
-    zIndex:'1',
-    borderRadius:'20px',
-    animation: 'modal 0.4s',
-    animationDirection: 'alternate',
-    padding: '0',
-})
 
-const UpdateModalCloseBtn = styled('button')({
-    color:'gray',
-    backgroundColor:  'inherit',
-    border:'none',
-    borderRadius:'20px',
-    margin: '15px 10px 0 0',
-    transition: 'all 0.2s linear',
-    textAlign:'right',
-    cursor: 'pointer',
-    float: 'right',
-    padding: '0',
-    
-})
-const UpdateModalCloseBtnBox= styled('div')({
-    width: '100%',
-    height: '10%',
-    
-})
+
+
 
 const CategoryListBox = styled('div')({
     textAlign:'center',
     width: '80%',
-    height: '55%',
     border: '1px solid #a8e9b0',
     marginLeft:'30px',
-    marginTop: '20px',
+    marginTop: '10px',
     borderRadius:'20px',
     padding:'10px',
+    paddingBottom:'20px',
+    minHeight:'190px',
     overflowY:'scroll',
     maxHeight:'55%',
 })
@@ -82,55 +46,27 @@ const Category=styled('button')({
 })
 
 
-const CategoryInputBox = styled('div')({
-    width: '80%',
-    height: '15%',
-    marginLeft:'35px',
-    marginTop:'5px',
-    padding:'0 10px',
-    display:'flex',
-    alignItems:'center',
-    justifyContent:'center',
-})
-const CategoryInput = styled('input')({
-    border: '0',
-    borderBottom:'1px solid #a8e9b0',
-    marginRight:'5px',
-    width: '150px',
-    fontSize:'13px',
-    padding:'5px',
-    paddingBottom:'3px',
-    height: '25px',
-    fontWeight:'500',
-    color:'gray',
-    textAlign:'center',
-    transition: 'all 0.1s linear',
-    '&::placeholder':{
-        fontWeight:'normal',
-        fontSize:'11px'
-    },
-    ' &:focus ':{
-        outline: 'none',
-        borderColor: '#a8e9b0',
-        boxShadow:' 0px 0px 5px #a8e9b0',
-    }
-})
 
-const CategorySubmmitBtn = styled('button')({
-    border: '0',
-    background: '#51e674',
+
+const CategorySubmmitBtn = styled(Button)({
+    background:'#78e184',
     color:'white',
     borderRadius:'20px',
-    padding:'6px 10px',
+    padding:'3px 0px',
     fontWeight:'bold',
-    
+    fontSize:'12px',
+    minWidth:'45px',
+    transition:'all 0.2s linear',
+    '&:hover':{
+        background:'#b7cab9',
+    }
 })
 const ModalHeaderBox=styled("div")({
     width: '100%',
     height: '5%',
     fontSize:'20px',
     textAlign:'center',
-    margin: "-10px 0 20px 30px",
+    margin: "10px 0px 0px 0px",
     '&>p':{
         fontWeight:'bold',
         color:'gray'
@@ -139,9 +75,14 @@ const ModalHeaderBox=styled("div")({
 
 export default function CategoryUpdateModal({handleModalOpen}) {
     const categoryRef = useRef();
-    const [categoryList,setCategoryList] = useState(["양식","한식","중식","서울","아시안","성북구","가족끼리 갔던 곳","제주도 서귀포"]);
+    const [categoryList,setCategoryList] = useState(["양식양식양식양식","양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식"]);
 
     const handleCategorySubmit = () =>{
+
+        if(categoryRef.current.value.length>10){
+            alert("카테고리는 10이내로 작성 가능합니다.");
+            return;
+        }
         if(categoryList.length>9){
             alert("카테고리는 10개까지 저장 가능합니다.");
             return;
@@ -159,10 +100,10 @@ export default function CategoryUpdateModal({handleModalOpen}) {
         categoryRef.current.value='';
     }
     return(
-        <ModalBackground>
-            <UpdateModal>
-                <UpdateModalCloseBtnBox>
-                    <UpdateModalCloseBtn 
+        <>
+            <ModalContent sx={{padding:'40px 0'}}>
+                <ModalCloseBtnBox>
+                    <ModalCloseBtn 
                         onClick={()=>{handleModalOpen()}}
                     >   
                         <HighlightOffIcon  sx={{
@@ -172,11 +113,19 @@ export default function CategoryUpdateModal({handleModalOpen}) {
                                 animationDirection: 'nomal',
                             } 
                         }}fontSize='large'/>
-                    </UpdateModalCloseBtn>
-                </UpdateModalCloseBtnBox>
+                    </ModalCloseBtn>
+                </ModalCloseBtnBox>
                 <ModalHeaderBox>
                     <p>카테고리 목록</p>
                 </ModalHeaderBox>
+                <Typography sx={{
+                    fontSize:'10px',
+                    textAlign:'center' ,
+                    margin:'10px 0 0 0',
+                    color:'coral'
+                    }}>
+                        * 카테고리는 10개까지 저장 가능합니다.
+                </Typography>
                 <CategoryListBox>
                     {
                         categoryList.map((c,i)=>{
@@ -207,9 +156,10 @@ export default function CategoryUpdateModal({handleModalOpen}) {
                         })
                     }
                 </CategoryListBox>
-                <CategoryInputBox>
-                    <CategoryInput 
-                        placeholder='카테고리를 입력해주세요'
+                <InputBox>
+                    <UserInput
+                        sx={{width:'60%' ,margin:'25px 5px 0 0'}} 
+                        placeholder='카테고리 입력 (10자 이내로 작성해 주세요.)'
                         onKeyPress={
                             (e)=>{
                                 if(e.key === 'Enter'){
@@ -217,8 +167,8 @@ export default function CategoryUpdateModal({handleModalOpen}) {
                                 }
                             }} ref={categoryRef}/>
                     <CategorySubmmitBtn onClick={handleCategorySubmit}>추가</CategorySubmmitBtn>
-                </CategoryInputBox>
-            </UpdateModal>
-        </ModalBackground>
+                </InputBox>
+            </ModalContent>
+        </>
     );
 }

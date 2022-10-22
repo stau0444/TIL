@@ -1,11 +1,12 @@
 import { styled } from '@material-ui/core';
 import LoginIcon from '@mui/icons-material/Login';
+import { useState } from 'react';
 
 
 const UserFormBox = styled('div')({
     margin:'10px auto',
-    maxWidth:'438px',
-    minWidth:'438px',
+    maxWidth:'428px',
+    minWidth:'428px',
     height: '80px',
     background: '#eff0e5',
     marginBottom:'10px',
@@ -34,7 +35,7 @@ const ContentLogoDesc = styled('p')({
     margin: '0',
     marginTop: '-4px',
     fontSize: '5px',
-    color:'#38b677',
+    color:'#828886',
     fontFamily: "'Alata', sans-serif",
 })
 const ContentLoginBox = styled('div')({
@@ -55,23 +56,20 @@ const LoginBox = styled('div')({
         fontWeight:'bold',
         padding:'5px',
         borderRadius:'20px',
-    },
-    
-    '&>.category-update-link':{
-        
-    },
-    '&>.add-thing-link':{
-        
+        animation: 'swing-in-bottom-bck 1.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both',
     },
     
 })
 const LoginLink = styled('a')({
+        width:'60px',
+        textAlign:'center',
         fontSize:'13px',
         color: '#695a5ac8',
         fontWeight:'bold',
         border: '1px solid gray',
         marginLeft:'240px',
         transition: 'all 0.3s ease-out',
+        animation: 'swing-in-bottom-bck 1.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both',
         '&:hover':{
             background: '#b3e7a7',
             color:'white'
@@ -86,16 +84,17 @@ const UserFunctionLink = styled('a')({
 const UserInfo =styled('div')({
     display: 'flex',
     alignItems:'center',
-
+    animation: 'swing-in-bottom-bck 1.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both',
     color: 'gray',
     border: '1px solid #b3dea8',
     borderRadius:'20px',
     height: "30%",
     padding:'4px 7px',
     background: 'palegreen',
-    marginRight:'30px',
+    marginRight:'18px',
+    marginLeft:'3px',
     '&>.user-thumb':{
-        width: '22px',
+        width: '20px',
         padding:'3px',
         borderRadius:'100px',
         background: 'whitesmoke',
@@ -117,8 +116,8 @@ const ContentSlogun = styled('div')({
 
 
 export default function UserForm({handleModalOpen}) {
-    const login =true;
-
+    const [isLogin,setIsLogin] =useState(false);
+    
     return(
         <>  
             <UserFormBox>
@@ -134,17 +133,19 @@ export default function UserForm({handleModalOpen}) {
                     </ContentSlogun>
                     <LoginBox>
                         {
-                            login?
+                            isLogin?
                             <>
-                                <UserFunctionLink href="#" alt="" className='category-update-link' onClick={()=>{handleModalOpen()}}>카테고리 수정 &nbsp; | </UserFunctionLink>
-                                <UserFunctionLink href="https://blog.ugosdev.com" alt="" className='add-thing-link'>장소추가 &nbsp; |</UserFunctionLink>
-                                <UserFunctionLink href="https://blog.ugosdev.com" alt="" className='logout-thing-link'>로그아웃 </UserFunctionLink>
+                                <UserFunctionLink href="#" alt="" onClick={()=>{handleModalOpen("update-category")}}>카테고리 수정 &nbsp; | </UserFunctionLink>
+                                <UserFunctionLink href="#" alt="" onClick={()=>{handleModalOpen("add-place")}}>장소추가 &nbsp; |</UserFunctionLink>
+                                <UserFunctionLink href="#" alt="" onClick={()=>{handleModalOpen("log-out");setIsLogin(false)}}>로그아웃 </UserFunctionLink>
                             </>
                             :
                             <>
-                                <LoginLink href='123'>
+                                <LoginLink href='#' onClick={()=>{handleModalOpen("log-in"); setIsLogin(true)}}>
                                     Login 
-                                    <LoginIcon sx={{fontSize:"15px",color:"royalblue",verticalAlign:'middle',paddingBottom:'1px'}}/>
+                                    <LoginIcon 
+                                    sx={{fontSize:"15px",color:"royalblue",verticalAlign:'middle',paddingBottom:'1px'}}
+                                    />
                                 </LoginLink>
                             </>
                         }
@@ -152,7 +153,7 @@ export default function UserForm({handleModalOpen}) {
                     </LoginBox>
                 </ContentLoginBox>
                 {
-                    login?
+                    isLogin?
                     <UserInfo>
                         <p className='user-id'>stau04</p>
                         <img className='user-thumb' src="logo192.png" alt="" />
