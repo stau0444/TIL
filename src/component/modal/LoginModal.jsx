@@ -4,7 +4,7 @@ import { ModalContent, ModalCloseBtnBox, ModalCloseBtn, ModalHeaderBox, InputBox
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { postLoginFail, postLoginStart, postLoginSuccess } from '../../redux/modules/login';
-import { useState } from 'react';
+import {useRef } from 'react';
 
 
 
@@ -15,14 +15,15 @@ const UserButton =styled(Button)({
 
 export default function LoginModal({handleModalOpen}) {
     const dispatch = useDispatch();
-    const [email,setEmail] = useState("");
-    const [pwd,setPwd] = useState("");
+    const emailRef = useRef("");
+    const pwdRef = useRef("");
+
     const handleLogin = () =>{
         async function handleLogin(){
             dispatch(postLoginStart())
-            const data ={email:"stau04@gmail.com",pwd:"asdasd12"}
+
             await axios
-                    .post('/api/user/login',data)        
+                    .post('/api/user/login',{email:emailRef.current.value , pwd:pwdRef.current.value})        
                     .then((resp)=>{
                         console.log('success',resp.data);
                         dispatch(postLoginSuccess(resp.data))
@@ -56,11 +57,11 @@ export default function LoginModal({handleModalOpen}) {
             <InputBox>
                 <Box>
                     <InputLabel >아이디</InputLabel>
-                    <UserInput onChange={(e)=>{setEmail(e)}}/>
+                    <UserInput ref={emailRef}/>
                 </Box>
                 <Box sx={{marginTop:'-10px'}}>
                     <InputLabel >비밀번호</InputLabel>
-                    <UserInput type="password" onChange={(e)=>{setPwd(e)}}/>
+                    <UserInput ref={pwdRef} type="password"/>
                 </Box>
                 <Box>
                     <ModalButton onClick={handleLogin}>로그인</ModalButton>
