@@ -2,6 +2,7 @@ import { styled } from '@mui/material';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { useState, useRef } from 'react';
 import { ModalContent, ModalCloseBtnBox, ModalCloseBtn, ModalHeaderBox, UserInput, InputBox, InputLabel, NotValidAlert, ModalButton } from '../../modal';
+import { useSelector } from 'react-redux';
 
 const UserInputSelect = styled('select')({
     borderRadius:'10px',
@@ -41,13 +42,11 @@ export default function AddPlaceModal({handleModalOpen}) {
             alert("카테고리를 설정 해주세요.")
             return
         }
-
-        console.log(placeName, selectRef.current.value,comment)
     }
     const selectRef = useRef("");
     const [placeName,setPlaceName] = useState("");
     const [comment,setComment] = useState("");
-    const [categoryList,setCategoryList] = useState(["양식양식양식양식","양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식"]);
+    const categoryList = useSelector(state => state.login.userInfo.categories);
     return(
         <ModalContent>
             <ModalCloseBtnBox>
