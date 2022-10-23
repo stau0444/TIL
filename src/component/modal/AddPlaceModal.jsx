@@ -1,10 +1,7 @@
-import { styled, Button } from '@mui/material';
+import { styled } from '@mui/material';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { useState, useRef } from 'react';
-import { ModalContent, ModalCloseBtnBox, ModalCloseBtn, ModalHeaderBox, UserInput, InputBox, InputLabel, NotValidAlert } from '../../modal';
-
-
-
+import { ModalContent, ModalCloseBtnBox, ModalCloseBtn, ModalHeaderBox, UserInput, InputBox, InputLabel, NotValidAlert, ModalButton } from '../../modal';
 
 const UserInputSelect = styled('select')({
     borderRadius:'10px',
@@ -26,21 +23,6 @@ const UserInputSelect = styled('select')({
     },
 })
 
-const AddPlaceBtn = styled(Button)({
-    border:'0',
-    background:'#78e184',
-    color:'white',
-    width:'30%',
-    height:'40px',
-    fontWeight:'bold',
-    borderRadius:'20px',
-    marginTop:'20px',
-    transition:'all 0.2s linear',
-    '&:hover':{
-        background:'#b7cab9',
-    }
-})
-
 
 export default function AddPlaceModal({handleModalOpen}) {
     const handleAddPlace = () =>{
@@ -59,10 +41,7 @@ export default function AddPlaceModal({handleModalOpen}) {
             alert("카테고리를 설정 해주세요.")
             return
         }
-        // if(selectRef.current. === 0){
-        //     alert("카테고리는 필수로 설정해야 합니다.")
-        //     return
-        // }
+
         console.log(placeName, selectRef.current.value,comment)
     }
     const selectRef = useRef("");
@@ -136,7 +115,7 @@ export default function AddPlaceModal({handleModalOpen}) {
                         </>
                     }
                 </div>
-                <AddPlaceBtn onClick={()=>{handleAddPlace()}}>장소 추가</AddPlaceBtn>
+                <ModalButton onClick={()=>{handleAddPlace()}}>장소 추가</ModalButton>
             </InputBox>
         </ModalContent>
     );

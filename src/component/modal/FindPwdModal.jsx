@@ -1,48 +1,10 @@
-import { styled, Button, Typography,  } from '@mui/material';
+import { Typography,  } from '@mui/material';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { useState } from 'react';
 import ChangePwdForm from './ChangePwdForm';
 import { Box } from '@mui/material';
-import { ModalCloseBtn, ModalContent, ModalCloseBtnBox, ModalHeaderBox, InputBox, UserInput, InputLabel, NotValidAlert } from '../../modal';
+import { ModalCloseBtn, ModalContent, ModalCloseBtnBox, ModalHeaderBox, InputBox, UserInput, InputLabel, NotValidAlert, ModalButton, VerificationInputBox } from '../../modal';
 
-const SendMailBtn = styled(Button)({
-    border:'0',
-    background:'#78e184',
-    color:'white',
-    width:'28%',
-    height:'40px',
-    fontWeight:'bold',
-    borderRadius:'20px',
-    marginTop:'5px',
-    transition:'all 0.2s linear',
-    '&:hover':{
-        background:'#b7cab9',
-    }
-})
-
-const VerificationInputBox = styled("div")({
-    width: '100%',
-    fontSize:'20px',
-    textAlign:'center',
-    marginTop:'10px',
-    '&>p':{
-        fontWeight:'bold',
-        color:'gray'
-    }
-})
-const FindPwdBtn = styled(Button)({
-    border:'0',
-    background:'#78e184',
-    color:'white',
-    width:'20%',
-    height:'40px',
-    fontWeight:'bold',
-    borderRadius:'20px',
-    transition:'all 0.2s linear',
-    '&:hover':{
-        background:'#b7cab9',
-    }
-})
 
 export default function FindPwdModal({handleModalOpen}) {
     const emailRegExp = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
@@ -127,7 +89,7 @@ export default function FindPwdModal({handleModalOpen}) {
                                 </>
                             }
                         </div>
-                        <SendMailBtn onClick={handleSendVerifyNum}>인증번호 전송</SendMailBtn>
+                        <ModalButton onClick={handleSendVerifyNum}>인증번호 전송</ModalButton>
                     </InputBox>
                     {
                         isEmailSent?
@@ -136,7 +98,7 @@ export default function FindPwdModal({handleModalOpen}) {
                                 <InputLabel>인증번호</InputLabel>
                                 <UserInput onChange={(e)=>{setUserInput(e.target.value)}}/>
                             </div>
-                            <FindPwdBtn onClick={()=>{handleVerification()}}>확인</FindPwdBtn>
+                            <ModalButton onClick={()=>{handleVerification()}}>확인</ModalButton>
                         </VerificationInputBox>   
                         :
                         ""

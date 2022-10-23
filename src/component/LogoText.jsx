@@ -1,6 +1,5 @@
 
-import {  styled,  } from '@material-ui/core';
-import { Box,Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography, styled } from '@mui/material';
 
 
 const LogoTextGrid = styled(Grid)({
@@ -20,22 +19,34 @@ const TextLine = styled('hr')(({
     background:"inherit",
     border:"none",
     margin: '0',
-    boxShadow:'5px 5px 10px #020000'
+    boxShadow:'5px 5px 10px #020000',
+    animation: 'modal 0.5s',
 }));
 
 const AnimatedLogo = (props)=>{
-    return <Typography
-            sx={{
-                animation: {xs:'shadow-pop-tr 0.8s both',lg:'shadow-pop-tr2 0.8s both'},
-                fontSize: '60px',
-                color: '#bbe4e8',
-                // color: "#b3ded2",
-                fontFamily: "'Alata', sans-serif",
-            }}
-            >
-            {props.text}
-          </Typography>
+    return  <>
+                <Typography
+                    sx={{
+                        animation: {xs:'shadow-pop-tr 0.8s both',lg:'shadow-pop-tr2 0.8s both'},
+                        fontSize: '60px',
+                        color: '#bbe4e8',
+                        // color: "#b3ded2",
+                        fontFamily: "'Alata', sans-serif",
+                    }}
+                    >
+                    {props.text}
+                </Typography>
+                <TextLine 
+                    width={props.borderWidth}
+                    sx={{
+                        animation: {xs:'modal 0.8s both',lg:'shadow-pop-tr2 0.8s both'},
+                        marginBottom:props.marginBottom
+                    }}
+                    />
+            </>
+
 }
+
 
 
 export default function LogoText() {
@@ -49,12 +60,9 @@ export default function LogoText() {
                     marginLeft:{xs:"30px"}
                 }}>
                 <Box>
-                    <AnimatedLogo text="THINGS"/>
-                    <TextLine width="210px"/>
-                    <AnimatedLogo text="I"/>
-                    <TextLine width="50px"/>
-                    <AnimatedLogo text="LOVE"/>
-                    <TextLine width="150px"/>
+                    <AnimatedLogo text="THINGS" borderWidth="210px"/>
+                    <AnimatedLogo text="I" borderWidth="50px"/>
+                    <AnimatedLogo text="LOVE" borderWidth="150px" marginBottom="20px"/>
                 </Box>
             </LogoTextGrid>
         </>

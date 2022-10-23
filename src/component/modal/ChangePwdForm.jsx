@@ -1,22 +1,6 @@
 
 import { useState } from 'react';
-import { styled, Button,  } from '@mui/material';
-import { UserInput, NotValidAlert, InputBox,InputLabel } from '../../modal';
-
-const ChangePwdBtn = styled(Button)({
-    border:'0',
-    background:'#78e184',
-    color:'white',
-    width:'30%',
-    height:'40px',
-    fontWeight:'bold',
-    borderRadius:'20px',
-    marginTop:'20px',
-    transition:'all 0.2s linear',
-    '&:hover':{
-        background:'#b7cab9',
-    }
-})
+import { UserInput, NotValidAlert, InputBox, InputLabel, ModalButton } from '../../modal';
 
 
 export default function ChangePwdForm({setIsPwdChanged}) {
@@ -70,7 +54,7 @@ export default function ChangePwdForm({setIsPwdChanged}) {
                     </>
                 }
             </div>
-            <ChangePwdBtn onClick={()=>{handleChangePwd()}}>비밀번호 변경</ChangePwdBtn>
+            <ModalButton onClick={()=>{handleChangePwd()}}>비밀번호 변경</ModalButton>
         </InputBox>
     );
 }

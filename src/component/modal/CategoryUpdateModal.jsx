@@ -4,11 +4,6 @@ import { useRef, useState } from 'react';
 import { styled, Button, Typography } from '@mui/material';
 import { ModalContent, ModalCloseBtnBox, ModalCloseBtn, InputBox, UserInput } from '../../modal';
 
-
-
-
-
-
 const CategoryListBox = styled('div')({
     textAlign:'center',
     width: '80%',
@@ -39,13 +34,12 @@ const Category=styled('button')({
     color: '#59b96e',
     fontWeight: 'bold',
     transition: 'all 0.3s ease-out',
+    animation: 'modal    1.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both',
     background: 'whitesmoke',
     '&:hover':{
         background: '#56d27747'
     }
 })
-
-
 
 
 const CategorySubmmitBtn = styled(Button)({
@@ -78,7 +72,6 @@ export default function CategoryUpdateModal({handleModalOpen}) {
     const [categoryList,setCategoryList] = useState(["양식양식양식양식","양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식"]);
 
     const handleCategorySubmit = () =>{
-
         if(categoryRef.current.value.length>10){
             alert("카테고리는 10이내로 작성 가능합니다.");
             return;

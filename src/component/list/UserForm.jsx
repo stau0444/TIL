@@ -13,9 +13,11 @@ const UserFormBox = styled('div')({
     borderRadius:'20px',
     alignItems:'center',
     display: 'flex',
-    boxShadow: '5px 5px 5px #2c2a2a4c',
-    borderTop:'5px solid #a1979741',
-    borderLeft:'5px solid #a1979741',
+    boxShadow: '10px 10px 10px #4b46464b',
+    // borderTop:'5px solid #a1979741',
+    // borderLeft:'5px solid #a1979741',
+    borderBottom:'5px solid #423c3c41',
+    borderRight:'5px solid #55505041',
  })
 const ContentLogoBox = styled('div')({
     padding:'10px',
@@ -24,19 +26,22 @@ const ContentLogoBox = styled('div')({
 })
 const ContentImageBox =styled('div')({
     textAlign: 'center',
-    marginBottom: '5px',
+    marginBottom: '3px',
+    marginLeft:'5px'
 })
 const ContentLogoImage =styled('img')({
     borderRadius: '5px',
     width: '70px',
-
+    border: '1px solid #78a150',
 })
 const ContentLogoDesc = styled('p')({
     margin: '0',
-    marginTop: '-4px',
+    marginTop: '-3px',
     fontSize: '5px',
-    color:'#828886',
-    fontFamily: "'Alata', sans-serif",
+    color:'#bfce84',
+    // fontFamily: "'Alata', sans-serif",
+    fontFamily: "'Spicy Rice', cursive",
+
 })
 const ContentLoginBox = styled('div')({
     width:'70%',
@@ -124,7 +129,7 @@ export default function UserForm({handleModalOpen}) {
                 <ContentLogoBox className='content-logoBox'>
                     <ContentImageBox className='content-imageBox'>
                         <ContentLogoImage className='content-logo' src='/tilLogo.png' alt=''/>
-                        <ContentLogoDesc className='content-logo-desc'>Things I love</ContentLogoDesc>
+                        <ContentLogoDesc className='content-logo-desc'>Things I Love</ContentLogoDesc>
                     </ContentImageBox>   
                 </ContentLogoBox>
                 <ContentLoginBox>

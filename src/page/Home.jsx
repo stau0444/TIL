@@ -3,7 +3,7 @@ import { Grid, styled } from '@material-ui/core';
 import ThingsList from '../component/list/ThingsList';
 import ThingsDetail from '../component/detail/ThingsDetail';
 import { useState } from 'react';
-import CustomModal from '../component/modal/CustomModal';
+import Modal from '../component/modal/Modal';
 
 
  const  HomeContainer = styled(Grid)({
@@ -27,10 +27,14 @@ export default function Home() {
         
         <HomeContainer container >
             {
-            isModalOpen.isOpen?
-                <CustomModal sx={{display:isModalOpen.isOpen?"block":"none"}} mode={isModalOpen.mode} handleModalOpen={handleModalOpen}/>
-            :
-            ""
+                isModalOpen.isOpen?
+                    <Modal
+                        sx={{display:isModalOpen.isOpen?"block":"none"}} 
+                        mode={isModalOpen.mode} 
+                        handleModalOpen={handleModalOpen}
+                    />
+                :
+                ""
             }
             <LogoText/>
             <ThingsList handleModalOpen={handleModalOpen}/>

@@ -1,4 +1,3 @@
-import { styled } from '@mui/material';
 import LoginModal from './LoginModal';
 import CategoryUpdateModal from './CategoryUpdateModal';
 import AddPlaceModal from './AddPlaceModal';
@@ -6,25 +5,15 @@ import LogOutModal from './LogOutModal';
 import SignUpModal from './SignUpModal';
 import FindIdModal from './FindIdModal';
 import FindPwdModal from './FindPwdModal';
+import { ModalBackground } from '../../modal';
 
 
-export const ModalBackground=styled('div')({
-  position: 'fixed',
-  zIndex: '1',
-  left: '0',
-  top: '0%',
-  width: '100%',
-  height: '100%',
-  overflow: 'auto',
-  backgroundColor: '#654d4d48',
-//   backgroundColor: 'rgba(0,0,0,0.4)',
-})
-export const ModaBackgroundWrapper= (props)=>{
+const ModaBackgroundWrapper= (props)=>{
     return <ModalBackground>
                 {props.comp}
            </ModalBackground>
 }
-export default function CustomModal({mode ,handleModalOpen}) {
+export default function Modal({mode ,handleModalOpen}) {
     switch (mode) {
         case "log-in":
             return  <ModaBackgroundWrapper comp={<LoginModal handleModalOpen={handleModalOpen}/>}/>

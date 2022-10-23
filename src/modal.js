@@ -1,5 +1,17 @@
 
-import { styled } from '@mui/material';
+import { styled, Button } from '@mui/material';
+
+export const ModalBackground=styled('div')({
+    position: 'fixed',
+    zIndex: '1',
+    left: '0',
+    top: '0%',
+    width: '100%',
+    height: '100%',
+    overflow: 'auto',
+    backgroundColor: '#654d4d48',
+  //   backgroundColor: 'rgba(0,0,0,0.4)',
+})
 
 export const ModalContent=styled('div')({
     background: 'white',
@@ -7,7 +19,7 @@ export const ModalContent=styled('div')({
     borderRadius:'20px',
     animation: 'modal 0.4s',
     animationDirection: 'alternate',
-    margin: '100px auto', /* 15% from the top and centered */
+    margin: '100px auto',
     padding: '50px 0',
     maxWidth:'380px',
     width: '80%',
@@ -89,5 +101,31 @@ export const UserInput = styled('input')({
         outline: 'none',
         borderColor: '#a8e9b0',
         boxShadow:' 0px 0px 5px #a8e9b0',
+    }
+})
+
+export const ModalButton = styled(Button)({
+    border:'0',
+    background:'#78e184',
+    color:'white',
+    width:'30%',
+    height:'40px',
+    fontWeight:'bold',
+    borderRadius:'20px',
+    marginTop:'20px',
+    transition:'all 0.2s linear',
+    '&:hover':{
+        background:'#b7cab9',
+    }
+})
+
+export const VerificationInputBox = styled("div")({
+    width: '100%',
+    fontSize:'20px',
+    textAlign:'center',
+    marginTop:'10px',
+    '&>p':{
+        fontWeight:'bold',
+        color:'gray'
     }
 })

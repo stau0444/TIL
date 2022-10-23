@@ -1,9 +1,11 @@
-import { Box, Grid, styled, Typography } from "@mui/material";
-import { useState } from 'react';
+import { Box, Grid, styled, Typography,Skeleton } from "@mui/material";
+import { useSelector } from 'react-redux';
+import ReceiptSkeleton from '../modal/ReceiptSkeleton';
 
 
 const ThingsDetailGrid = styled(Grid)({
     paddingTop:'11px',
+    animation: 'modal 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) ',
 });
 
 const ThingsDetailsBox = styled(Box)({
@@ -11,20 +13,21 @@ const ThingsDetailsBox = styled(Box)({
     maxWidth:'400px',
     minWidth:'400px',
     background: '#eff0e5',
-    boxShadow: '5px 5px 5px #2c2a2a4c',
+    boxShadow: '10px 10px 10px #4b46464b',
     borderRadius:'20px',
-    height: '574px',
+    height: '575px',
     padding: '15px',
-    borderTop:'5px solid #a1979741',
-    borderLeft:'5px solid #a1979741',
+    // borderTop:'5px solid #a1979741',
+    // borderLeft:'5px solid #a1979741',
+    borderBottom:'5px solid #423c3c41',
+    borderRight:'5px solid #55505041',
 })
 
 const ThingsDeatailsInner = styled('div')({
     borderRadius:'20px',
-    animation: 'modal 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) ',
+    // animation: 'modal 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) ',
 })
 const ThingsDetailHeader = styled('div')({
-    
     paddingLeft: '15px',
     '& > div ':{
         marginBottom: '12px',
@@ -37,7 +40,7 @@ const ThingsDetailHeader = styled('div')({
         borderRadius:'3px',
         fontWeight:'bold',
         borderBottom:'2px solid gray',
-        borderRight:'2px solid gray'
+        borderRight:'2px solid gray',
     }
 })
 const ThingsDetailInfo = styled('div')({
@@ -45,9 +48,9 @@ const ThingsDetailInfo = styled('div')({
     display: 'flex',
     border:'1px solid gray',
     padding: '8px 0px',
-    paddingLeft:'10px',
+    paddingLeft:'5px',
     borderRadius:'20px',
-    marginLeft:'-15px'
+    marginLeft:'-14px'
 })
 const ThingsSearchLink = styled('a')({
     textDecoration:'none',
@@ -82,6 +85,7 @@ const CommentListBox = styled('div')({
     borderRadius:'20px',
     padding: '0 10px',
     maxHeight:'416px',
+    marginTop:'15px',
     overflowY:'scroll'
 })
 const CommentBox = styled('div')({
@@ -93,8 +97,10 @@ const CommentBox = styled('div')({
 })
 const CommentLeft=styled('div')({
     width: '70%',
+    marginLeft:'5px',
     '& > .comment-content':{
-        fontSize:'14px'
+        fontSize:'12px',
+        marginTop:'5px'
     },
     '& > .comment-menu':{
         fontSize:'10px',
@@ -120,26 +126,13 @@ const OneLineReviewBox=styled('div')({
     }
 })
 export default function ThingsDetail() {
-    const [commentList,setCommentList] = useState(
-                                    [
-                                        {menu:["김치찌개" , "삼겹살", "계란찜"],desc:"comment description",visitDate:"2020/12/11"},
-                                        {menu:["김치찌개" , "삼겹살", "계란찜"],desc:"comment description",visitDate:"2020/12/11"},
-                                        {menu:["김치찌개" , "삼겹살", "계란찜"],desc:"comment description",visitDate:"2020/12/11"},
-                                        {menu:["김치찌개" , "삼겹살", "계란찜"],desc:"comment description",visitDate:"2020/12/11"},
-                                        {menu:["김치찌개" , "삼겹살", "계란찜"],desc:"comment description",visitDate:"2020/12/11"},
-                                        {menu:["김치찌개" , "삼겹살", "계란찜"],desc:"comment description",visitDate:"2020/12/11"},
-                                        {menu:["김치찌개" , "삼겹살", "계란찜"],desc:"comment description",visitDate:"2020/12/11"},
-                                        {menu:["김치찌개" , "삼겹살", "계란찜"],desc:"comment description",visitDate:"2020/12/11"},
-                                        {menu:["김치찌개" , "삼겹살", "계란찜"],desc:"comment description",visitDate:"2020/12/11"},
-                                        {menu:["김치찌개" , "삼겹살", "계란찜"],desc:"comment description",visitDate:"2020/12/11"},
-                                        {menu:["김치찌개" , "삼겹살", "계란찜"],desc:"comment description",visitDate:"2020/12/11"},
-                                    ]
-    );
+    
+    const {loading,receiptList,name,comment,visitTime} = useSelector(state => state.detail)
     const NAVER_SEARCH_URL = 'https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query='
     return(
         <>
-            <ThingsDetailGrid item xs={12}lg={4} >
-                <ThingsDetailsBox sx={{marginLeft:{xs:'auto',lg:'0'}}}>
+            <ThingsDetailGrid item xs={12} lg={4} >
+                <ThingsDetailsBox>
                     <ThingsDeatailsInner sx={{
                         animation: {
                             xs:'modal 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940)',
@@ -148,13 +141,28 @@ export default function ThingsDetail() {
                     }}>
                         <ThingsDetailHeader>
                             <div>
-                                <ThingsDetailTitle>정릉설렁탕</ThingsDetailTitle>
-                                <OneLineReviewBox>
-                                    <p className='my-review'>" 정릉동 숨은 맛집 다신안감 "</p>
-                                </OneLineReviewBox>
+                                {
+                                    loading?
+                                    <>
+                                        <Skeleton sx={{width:"100px",height:"45px",padding:"0"}} animation="wave"/>
+                                        <Skeleton sx={{width:"200px",height:"30px",marginBottom:"10px",marginTop:"-5px"}} animation="wave"/>
+                                    </>
+                                    :
+                                    <>
+                                        <ThingsDetailTitle>{name}</ThingsDetailTitle>
+                                        <OneLineReviewBox>
+                                            <p className='my-review'>" {comment} "</p>
+                                        </OneLineReviewBox>
+                                    </>
+                                }
                                 <ThingsDetailInfo>
-                                    <Typography variant="p"sx={{margin:'0 10px 0 13px'}}>정릉설렁탕에 5번 방문했어요!</Typography>   
-                                    <ThingsSearchLink href={NAVER_SEARCH_URL+"정릉설렁탕"} target="_blank" rel="noreferrer">네이버로 검색하기</ThingsSearchLink>
+                                    {
+                                        loading?
+                                            <Skeleton sx={{width:"150px",height:"18px",marginLeft:'10px'}} animation="wave"/>
+                                            :
+                                            <Typography variant="p"sx={{margin:'0 10px 0 10px','&>span':{color:'rgb(114, 183, 117)',fontWeight:"800",fontSize:"12px"}}}><span>{name}</span>에 <span>{visitTime}</span>번 방문했어요!</Typography>   
+                                    }
+                                    <ThingsSearchLink href={NAVER_SEARCH_URL+{name}} target="_blank" rel="noreferrer">네이버로 검색하기</ThingsSearchLink>
                                     <ThingSearchNaverImg src='https://i.pinimg.com/564x/fb/71/04/fb71048e03a5ada757f70d61b583d0bf.jpg' alt=''/>
                                 </ThingsDetailInfo>
                             </div>
@@ -164,13 +172,23 @@ export default function ThingsDetail() {
                         </ThingsDetailHeader>
                         <CommentListBox>
                             <ul>
-                                {
-                                    commentList.map((c,i)=>{
+                                {   
+                                loading?
+                                    <>
+                                      <ReceiptSkeleton num={11}/>  
+                                    </>
+                                :
+                                    receiptList.map((c,i)=>{
                                     return  <li key={i}>
-                                                <CommentBox>
+                                                <CommentBox sx={{
+                                                    animation: {
+                                                        xs:'swing-in-bottom-bck 0.9s cubic-bezier(0.250, 0.460, 0.450, 0.940)',
+                                                        lg:'swing-in-bottom-bck1 0.9s cubic-bezier(0.250, 0.460, 0.450, 0.940) '
+                                                      }
+                                                }}>
                                                     <CommentLeft>
                                                         <p className='comment-menu'>메뉴: {c.menu.map(m=>m+",")}</p>
-                                                        <p className='comment-content'>{c.desc}</p>
+                                                        <p className='comment-content'>{c.comment}</p>
                                                     </CommentLeft>
                                                     <CommentRight>
                                                         <span>{c.visitDate}</span>
