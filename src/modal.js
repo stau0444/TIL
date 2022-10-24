@@ -76,7 +76,7 @@ export const InputLabel =styled('p')({
 export const NotValidAlert= styled('p')({
     fontSize:'10px',
     color:"#b96759",
-    Webkitanimation: 'modal 0.5s',
+    WebkitAnimation: 'modal 0.5s',
     animation: 'modal 0.5s',
     marginBottom:'10px'
     
