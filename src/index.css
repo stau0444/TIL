@@ -1,8 +1,12 @@
 
-html , body , #root {
+#root{
+  --doc-height: 100%;
+}
+html , body {
   background: rgb(150, 205, 152);
   /* background: rgb(167, 198, 232); */
   margin: 0;
+  height: 100vh;
 }
 p,h4,h3,h2{
   margin: 0;

@@ -162,7 +162,7 @@ export default function ThingsDetail() {
                                             :
                                             <Typography variant="p"sx={{margin:'0 10px 0 10px','&>span':{color:'rgb(114, 183, 117)',fontWeight:"800",fontSize:"12px"}}}><span>{name}</span>에 <span>{visitTime}</span>번 방문했어요!</Typography>   
                                     }
-                                    <ThingsSearchLink href={NAVER_SEARCH_URL+{name}} target="_blank" rel="noreferrer">네이버로 검색하기</ThingsSearchLink>
+                                    <ThingsSearchLink href={NAVER_SEARCH_URL+name} target="_blank" rel="noreferrer">네이버로 검색하기</ThingsSearchLink>
                                     <ThingSearchNaverImg src='https://i.pinimg.com/564x/fb/71/04/fb71048e03a5ada757f70d61b583d0bf.jpg' alt=''/>
                                 </ThingsDetailInfo>
                             </div>

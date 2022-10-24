@@ -26,10 +26,11 @@ export default function LoginModal({handleModalOpen}) {
                     .post('/api/user/login',{email:emailRef.current.value , pwd:pwdRef.current.value})        
                     .then((resp)=>{
                         console.log('success',resp.data);
-                        dispatch(postLoginSuccess(resp.data))
+                        dispatch(postLoginSuccess(resp.data));
+                        handleModalOpen();
                     })
                     .catch((error)=>{
-                        dispatch(postLoginFail())
+                        dispatch(postLoginFail());
                         alert(error);
                     });
         }

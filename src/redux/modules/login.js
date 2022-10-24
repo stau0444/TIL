@@ -1,7 +1,7 @@
-const POST_LOGIN_START = "ugo-blog/login/POST_LOGIN_START"
-const POST_LOGIN_SUCCESS = "ugo-blog/login/POST_LOGIN_SUCCESS"
-const POST_LOGIN_FAIL = "ugo-blog/login/POST_LOGIN_FAIL"
-const POST_LOGOUT = "ugo-blog/login/POST_LOGOUT"
+const POST_LOGIN_START = "thingilove/login/POST_LOGIN_START"
+const POST_LOGIN_SUCCESS = "thingilove/login/POST_LOGIN_SUCCESS"
+const POST_LOGIN_FAIL = "thingilove/login/POST_LOGIN_FAIL"
+const POST_LOGOUT = "thingilove/login/POST_LOGOUT"
 
 export function postLogOut(){
     return{

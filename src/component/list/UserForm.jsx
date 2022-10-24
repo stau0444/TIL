@@ -1,6 +1,7 @@
 import { styled } from '@material-ui/core';
 import LoginIcon from '@mui/icons-material/Login';
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
+
 
 
 const UserFormBox = styled('div')({
@@ -121,7 +122,8 @@ const ContentSlogun = styled('div')({
 
 
 export default function UserForm({handleModalOpen}) {
-    const [isLogin,setIsLogin] =useState(false);
+    const isLogin = useSelector(state=>state.login.login);
+    const {email} = useSelector(state=>state.login.userInfo);   
     
     return(
         <>  
@@ -137,19 +139,25 @@ export default function UserForm({handleModalOpen}) {
                                 <small>내가 좋아하는 것들만 저장해요! 🍔 🌮 🍷  ☕️  🥩</small>
                     </ContentSlogun>
                     <LoginBox>
-                        {
+                        {console.log(isLogin)}
+                        {   
                             isLogin?
                             <>
                                 <UserFunctionLink href="#" alt="" onClick={()=>{handleModalOpen("update-category")}}>카테고리 수정 &nbsp; | </UserFunctionLink>
                                 <UserFunctionLink href="#" alt="" onClick={()=>{handleModalOpen("add-place")}}>장소추가 &nbsp; |</UserFunctionLink>
-                                <UserFunctionLink href="#" alt="" onClick={()=>{handleModalOpen("log-out");setIsLogin(false)}}>로그아웃 </UserFunctionLink>
+                                <UserFunctionLink href="#" alt="" onClick={()=>{handleModalOpen("log-out")}}>로그아웃 </UserFunctionLink>
                             </>
                             :
                             <>
-                                <LoginLink href='#' onClick={()=>{handleModalOpen("log-in"); setIsLogin(true)}}>
+                                <LoginLink href='#' onClick={()=>{handleModalOpen("log-in");}}>
                                     Login 
                                     <LoginIcon 
-                                    sx={{fontSize:"15px",color:"royalblue",verticalAlign:'middle',paddingBottom:'1px'}}
+                                    sx={{
+                                        fontSize:"15px",
+                                        color:"royalblue",
+                                        verticalAlign:'middle',
+                                        paddingBottom:'1px',
+                                    }}
                                     />
                                 </LoginLink>
                             </>
@@ -160,7 +168,7 @@ export default function UserForm({handleModalOpen}) {
                 {
                     isLogin?
                     <UserInfo>
-                        <p className='user-id'>stau04</p>
+                        <p className='user-id'>{email}</p>
                         <img className='user-thumb' src="logo192.png" alt="" />
                     </UserInfo>
                     :
