@@ -32,6 +32,7 @@ const ThigsItem = styled('li')({
   borderRadius: '10px',
   /* background: rgba(240, 181, 171, 0.805); */
   boxShadow: '5px 5px 5px rgba(164, 152, 152, 0.3)',
+  WebkitTransform:'all 0.3s ease-out',
   transition: 'all 0.3s ease-out',
   '&:hover':{
     background: '#b2fbe9',

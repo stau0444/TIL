@@ -54,6 +54,7 @@ const ThingsSearchLink = styled('a')({
     color:'#1f6b29',
     fontWeight:'bold',
     marginLeft:"10px",
+    WebkitTransform:'all 0.2s linear',
     transition: 'all 0.2s linear',
     borderRadius:'20px',
     '&:hover':{

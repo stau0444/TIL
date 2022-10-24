@@ -74,6 +74,7 @@ const LoginLink = styled('a')({
         fontWeight:'bold',
         border: '1px solid gray',
         marginLeft:'240px',
+        WebkitTransition:'all 0.3s ease-out',
         transition: 'all 0.3s ease-out',
         animation: 'swing-in-bottom-bck 1.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both',
         '&:hover':{

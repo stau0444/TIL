@@ -31,6 +31,7 @@ export const ModalCloseBtn = styled('button')({
     border:'none',
     borderRadius:'20px',
     margin: '-35px 12px 0 0',
+    WebkitTransform:'all 0.2s linear',
     transition: 'all 0.2s linear',
     textAlign:'right',
     cursor: 'pointer',
@@ -93,6 +94,7 @@ export const UserInput = styled('input')({
     fontWeight:'500',
     color:'gray',
     textAlign:'center',
+    WebkitTransform:'all 0.2s linear',
     transition: 'all 0.2s linear',
     '&::placeholder':{
         fontWeight:'normal',
@@ -114,6 +116,7 @@ export const ModalButton = styled(Button)({
     fontWeight:'bold',
     borderRadius:'20px',
     marginTop:'20px',
+    WebkitTransform:'all 0.2s linear',
     transition:'all 0.2s linear',
     '&:hover':{
         background:'#b7cab9',
