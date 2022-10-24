@@ -46,8 +46,8 @@ export default function LoginModal({handleModalOpen}) {
                     <HighlightOffIcon  sx={{
                         '&:hover':{
                             color:'#e75555',
-                            animation: 'modalSpin 0.5s',
-                            WebkitAnimation:'modalSpin 0.5s',
+                            animation: 'modalSpin 0.5s linear',
+                            WebkitAnimation:'modalSpin 0.5s linear',
                         } 
                     }}fontSize='large'/>
                 </ModalCloseBtn>

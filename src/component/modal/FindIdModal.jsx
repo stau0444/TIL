@@ -41,8 +41,7 @@ export default function FindIdModal({handleModalOpen}) {
                         <HighlightOffIcon  sx={{
                             '&:hover':{
                                 color:'#e75555',
-                                animation: 'modalSpin 0.5s',
-                                animationDirection: 'nomal',
+                                animation: 'modalSpin 0.5s linear',
                             } 
                         }}fontSize='large'/>
                     </ModalCloseBtn>

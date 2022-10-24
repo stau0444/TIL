@@ -102,8 +102,7 @@ export default function CategoryUpdateModal({handleModalOpen}) {
                         <HighlightOffIcon  sx={{
                             '&:hover':{
                                 color:'#e75555',
-                                animation: 'modalSpin 0.5s',
-                                animationDirection: 'nomal',
+                                animation: 'modalSpin 0.5s linear',
                             } 
                         }}fontSize='large'/>
                     </ModalCloseBtn>
@@ -133,8 +132,7 @@ export default function CategoryUpdateModal({handleModalOpen}) {
                                                     transition:'all 0.4s linear',
                                                     '&:hover':{
                                                         color:'#f05555',
-                                                        animation: 'modalSpin 0.5s',
-                                                        animationDirection: 'nomal',
+                                                        animation: 'modalSpin 0.5s linear',
                                                     }
                                                 }}
                                                 onClick={()=>{

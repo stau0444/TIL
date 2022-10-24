@@ -30,7 +30,7 @@ export default function LogOutModal({handleModalOpen}) {
                 <HighlightOffIcon  sx={{
                     '&:hover':{
                         color:'#e75555',
-                        animation: 'modalSpin 0.5s',
+                        animation: 'modalSpin 0.5s linear',
                         animationDirection: 'nomal',
                     } 
                 }}fontSize='large'/>

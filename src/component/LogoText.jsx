@@ -20,8 +20,8 @@ const TextLine = styled('hr')(({
     border:"none",
     margin: '0',
     boxShadow:'5px 5px 10px #020000',
-    WebkitAnimation:'modal 0.5s',
-    animation: 'modal 0.5s',
+    WebkitAnimation:'modal 0.5s linear',
+    animation: 'modal 0.5s linear',
 }));
 
 const AnimatedLogo = (props)=>{

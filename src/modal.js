@@ -17,7 +17,7 @@ export const ModalContent=styled('div')({
     background: 'white',
     zIndex:'1',
     borderRadius:'20px',
-    WebkitAnimation:'modal 0.4s',
+    // WebkitAnimation:'modal 0.4s',
     animation: 'modal 0.4s',
     margin: '100px auto',
     padding: '50px 0',
@@ -31,7 +31,7 @@ export const ModalCloseBtn = styled('button')({
     border:'none',
     borderRadius:'20px',
     margin: '-35px 12px 0 0',
-    WebkitTransform:'all 0.2s linear',
+    WebkitTransition:'all 0.2s linear',
     transition: 'all 0.2s linear',
     textAlign:'right',
     cursor: 'pointer',
@@ -77,8 +77,8 @@ export const InputLabel =styled('p')({
 export const NotValidAlert= styled('p')({
     fontSize:'10px',
     color:"#b96759",
-    WebkitAnimation: 'modal 0.5s',
-    animation: 'modal 0.5s',
+    WebkitAnimation: 'modal 0.5s linear',
+    animation: 'modal 0.5s linear',
     marginBottom:'10px'
     
 })
@@ -94,7 +94,7 @@ export const UserInput = styled('input')({
     fontWeight:'500',
     color:'gray',
     textAlign:'center',
-    WebkitTransform:'all 0.2s linear',
+    WebkitTransition:'all 0.2s linear',
     transition: 'all 0.2s linear',
     '&::placeholder':{
         fontWeight:'normal',
@@ -116,7 +116,7 @@ export const ModalButton = styled(Button)({
     fontWeight:'bold',
     borderRadius:'20px',
     marginTop:'20px',
-    WebkitTransform:'all 0.2s linear',
+    WebkitTransition:'all 0.2s linear',
     transition:'all 0.2s linear',
     '&:hover':{
         background:'#b7cab9',
