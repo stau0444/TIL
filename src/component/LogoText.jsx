@@ -20,6 +20,7 @@ const TextLine = styled('hr')(({
     border:"none",
     margin: '0',
     boxShadow:'5px 5px 10px #020000',
+    WebkitAnimation:'modal 0.5s',
     animation: 'modal 0.5s',
 }));
 
@@ -28,6 +29,7 @@ const AnimatedLogo = (props)=>{
                 <Typography
                     sx={{
                         animation: {xs:'shadow-pop-tr 0.8s both',lg:'shadow-pop-tr2 0.8s both'},
+                        WebkitAnimation:{xs:'shadow-pop-tr 0.8s both',lg:'shadow-pop-tr2 0.8s both'},
                         fontSize: '60px',
                         color: '#bbe4e8',
                         // color: "#b3ded2",
@@ -40,6 +42,7 @@ const AnimatedLogo = (props)=>{
                     width={props.borderWidth}
                     sx={{
                         animation: {xs:'modal 0.8s both',lg:'shadow-pop-tr2 0.8s both'},
+                        WebkitAnimation:{xs:'modal 0.8s both',lg:'shadow-pop-tr2 0.8s both'},
                         marginBottom:props.marginBottom
                     }}
                     />

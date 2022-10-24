@@ -47,7 +47,7 @@ export default function LoginModal({handleModalOpen}) {
                         '&:hover':{
                             color:'#e75555',
                             animation: 'modalSpin 0.5s',
-                            animationDirection: 'nomal',
+                            WebkitAnimation:'modalSpin 0.5s',
                         } 
                     }}fontSize='large'/>
                 </ModalCloseBtn>
