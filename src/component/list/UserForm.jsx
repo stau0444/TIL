@@ -1,13 +1,13 @@
-import { styled } from '@material-ui/core';
 import LoginIcon from '@mui/icons-material/Login';
 import { useSelector } from 'react-redux';
+import { styled } from '@mui/material';
 
 
 
 const UserFormBox = styled('div')({
     margin:'10px auto',
     maxWidth:'428px',
-    minWidth:'428px',
+    // minWidth:'428px',
     height: '80px',
     background: '#eff0e5',
     marginBottom:'10px',
@@ -124,10 +124,10 @@ const ContentSlogun = styled('div')({
 export default function UserForm({handleModalOpen}) {
     const isLogin = useSelector(state=>state.login.login);
     const {email} = useSelector(state=>state.login.userInfo);   
-    
+            
     return(
         <>  
-            <UserFormBox>
+            <UserFormBox >
                 <ContentLogoBox className='content-logoBox'>
                     <ContentImageBox className='content-imageBox'>
                         <ContentLogoImage className='content-logo' src='/tilLogo.png' alt=''/>

@@ -57,7 +57,7 @@ export default function LogoText() {
                 lg={2} 
                 sx={{
                     marginRight:{lg:'30px'},
-                    marginLeft:{xs:"30px"}
+                    marginLeft:{xs:"5px"}
                 }}>
                 <Box>
                     <AnimatedLogo text="THINGS" borderWidth="210px"/>

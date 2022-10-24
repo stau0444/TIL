@@ -11,14 +11,11 @@ const ThingsDetailGrid = styled(Grid)({
 const ThingsDetailsBox = styled(Box)({
     margin:'10px auto',
     maxWidth:'400px',
-    minWidth:'400px',
     background: '#eff0e5',
     boxShadow: '10px 10px 10px #4b46464b',
     borderRadius:'20px',
     height: '575px',
     padding: '15px',
-    // borderTop:'5px solid #a1979741',
-    // borderLeft:'5px solid #a1979741',
     borderBottom:'5px solid #423c3c41',
     borderRight:'5px solid #55505041',
 })
