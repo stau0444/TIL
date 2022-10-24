@@ -29,7 +29,6 @@ const AnimatedLogo = (props)=>{
                 <Typography
                     sx={{
                         animation: {xs:'shadow-pop-tr 0.8s both',lg:'shadow-pop-tr2 0.8s both'},
-                        WebkitAnimation:{xs:'shadow-pop-tr 0.8s both',lg:'shadow-pop-tr2 0.8s both'},
                         fontSize: '60px',
                         color: '#bbe4e8',
                         // color: "#b3ded2",
@@ -41,8 +40,7 @@ const AnimatedLogo = (props)=>{
                 <TextLine 
                     width={props.borderWidth}
                     sx={{
-                        animation: {xs:'modal 0.8s both',lg:'shadow-pop-tr2 0.8s both'},
-                        WebkitAnimation:{xs:'modal 0.8s both',lg:'shadow-pop-tr2 0.8s both'},
+                        animation: {xs:'modal 0.8s both',lg:'modal 0.8s both'},
                         marginBottom:props.marginBottom
                     }}
                     />

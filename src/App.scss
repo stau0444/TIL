@@ -76,18 +76,22 @@
 }
 @keyframes modalSpin {
   0% {
+    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
   100%{
+    -webkit-transform: rotate(90deg);
     transform: rotate(90deg);
   }
 }
 
 @keyframes modalSpin1 {
   0% {
+    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
   100%{
+    -webkit-transform: rotate(90deg);
     transform: rotate(90deg);
   }
 }
