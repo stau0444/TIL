@@ -2,6 +2,7 @@
 :root{
   --doc-height: 100%;
 }
+
 html , body , #root {
   background: rgb(150, 205, 152);
   /* background: rgb(167, 198, 232); */

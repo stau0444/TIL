@@ -39,7 +39,7 @@ export default function FindPwdModal({handleModalOpen}) {
                         <HighlightOffIcon  sx={{
                             '&:hover':{
                                 color:'#e75555',
-                                animation: 'modalSpin 0.5s linear',
+                                animation: 'modalSpin 0.3s linear',
                             } 
                         }}fontSize='large'/>
                     </ModalCloseBtn>

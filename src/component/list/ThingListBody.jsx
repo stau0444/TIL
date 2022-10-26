@@ -44,7 +44,7 @@ const ThigsItem = styled('li')({
 
 export default function ThingsListBody() {
     const state = useSelector(state=>state);
-    const thingsList = useSelector(state=>state.login.userInfo.things);
+    const thingsList = useSelector(state=>state.user.userInfo.things);
     const dispatch = useDispatch();
     const handleThingDetail = (id) =>{
         async function handleThingDetail(){

@@ -1,8 +1,11 @@
 
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import { useRef, useState } from 'react';
+import { useRef,  } from 'react';
 import { styled, Button, Typography } from '@mui/material';
 import { ModalContent, ModalCloseBtnBox, ModalCloseBtn, InputBox, UserInput } from '../../modal';
+import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
+import { postCategorySuccess, deleteCategorySuccess } from '../../redux/modules/user';
 
 const CategoryListBox = styled('div')({
     textAlign:'center',
@@ -69,14 +72,15 @@ const ModalHeaderBox=styled("div")({
 
 export default function CategoryUpdateModal({handleModalOpen}) {
     const categoryRef = useRef();
-    const [categoryList,setCategoryList] = useState(["양식양식양식양식","양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식","양식양식양식양식양식"]);
-
+    const {categories,email} = useSelector(state => state.user.userInfo);
+    const dispatch = useDispatch();
+    
     const handleCategorySubmit = () =>{
         if(categoryRef.current.value.length>10){
             alert("카테고리는 10이내로 작성 가능합니다.");
             return;
         }
-        if(categoryList.length>9){
+        if(categories.length>9){
             alert("카테고리는 10개까지 저장 가능합니다.");
             return;
         }
@@ -84,16 +88,30 @@ export default function CategoryUpdateModal({handleModalOpen}) {
             alert("추가할 카테고리를 입력해 주세요.");
             return;
         }
-        if(categoryList.find(c=>c === categoryRef.current.value) !== undefined){
+        if(categories.find(c=>c === categoryRef.current.value) !== undefined){
             alert("카테고리는 중복될 수 없습니다.");
             categoryRef.current.value='';
             return;
         }
-        setCategoryList([...categoryList,categoryRef.current.value]);
+
+        async function handleCategorySubmit(){
+            await axios.post("/api/user/category",{category:categoryRef.current.value,userEmail:email})
+                    .then((resp)=>{dispatch(postCategorySuccess(resp.data));})
+                    .catch((resp)=>{alert("잘못된 값이 입력되었습니다.")})
+        }
+        handleCategorySubmit();
         categoryRef.current.value='';
     }
+    const handleDeleteCategory=(id)=>{
+        async function handleDeleteCategory(){
+            await axios.delete(`/api/user/category/${id}`)
+            .then((resp)=>{dispatch(deleteCategorySuccess(resp.data.id))})
+            .catch((error)=>console.log(error))
+        }
+        handleDeleteCategory();
+    }
     return(
-        <>
+        <>  
             <ModalContent sx={{padding:'40px 0'}}>
                 <ModalCloseBtnBox>
                     <ModalCloseBtn 
@@ -102,7 +120,7 @@ export default function CategoryUpdateModal({handleModalOpen}) {
                         <HighlightOffIcon  sx={{
                             '&:hover':{
                                 color:'#e75555',
-                                animation: 'modalSpin 0.5s linear',
+                                animation: 'modalSpin 0.3s linear',
                             } 
                         }}fontSize='large'/>
                     </ModalCloseBtn>
@@ -120,10 +138,11 @@ export default function CategoryUpdateModal({handleModalOpen}) {
                 </Typography>
                 <CategoryListBox>
                     {
-                        categoryList.map((c,i)=>{
-                            return  <Category  key={i}>
+                        
+                        categories.map((c)=>{
+                            return  <Category  key={c.id}>
                                         <CategoryBox>
-                                            <p>{c}</p>
+                                            <p>{c.name}</p>
                                             <HighlightOffIcon 
                                                 sx={{
                                                     fontSize:'18px',
@@ -132,13 +151,13 @@ export default function CategoryUpdateModal({handleModalOpen}) {
                                                     transition:'all 0.4s linear',
                                                     '&:hover':{
                                                         color:'#f05555',
-                                                        animation: 'modalSpin 0.5s linear',
+                                                        animation: 'modalSpin 0.3s linear',
                                                     }
                                                 }}
                                                 onClick={()=>{
-                                                    const DeleteConfirm = window.confirm(c+"을(를) 삭제하시겠습니까?");
+                                                    const DeleteConfirm = window.confirm(`* 카테고리를 삭제하면 카테고리에 포함된 컨텐츠도 함께 삭제됩니다.\n "${c.name}"을(를) 삭제하시겠습니까?`);
                                                     if(DeleteConfirm){
-                                                        setCategoryList(categoryList.filter((ca)=>ca !== c))
+                                                        handleDeleteCategory(c.id);
                                                     }
                                                 }}
                                             />

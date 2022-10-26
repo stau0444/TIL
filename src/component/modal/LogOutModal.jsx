@@ -2,7 +2,7 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { ModalContent, ModalCloseBtnBox, ModalCloseBtn, ModalHeaderBox, ModalButton } from '../../modal';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import { postLogOut } from '../../redux/modules/login';
+import { postLogOut } from '../../redux/modules/user';
 import { resetDetail } from '../../redux/modules/detail';
 
 
@@ -30,7 +30,7 @@ export default function LogOutModal({handleModalOpen}) {
                 <HighlightOffIcon  sx={{
                     '&:hover':{
                         color:'#e75555',
-                        animation: 'modalSpin 0.5s linear',
+                        animation: 'modalSpin 0.3s linear',
                         animationDirection: 'nomal',
                     } 
                 }}fontSize='large'/>

@@ -23,7 +23,6 @@ const Slide = styled('div')({
         fontSize:'12px',
         border: '1px solid gray',
         padding:'5px 8px',
-        paddingTop:'3.5px',
         borderRadius:'12px',
         color: '#59b96e',
         fontWeight: 'bold',
@@ -62,7 +61,7 @@ const SearchOption = styled('div')({
   })
 
 export default function CategorySlide() {
-    const categoryList = useSelector(state => state.login.userInfo.categories);
+    const categoryList = useSelector(state => state.user.userInfo.categories);
     
     const [searchCondition, setSearchCondition] = useState({orderBy:"" , category:""});
 
@@ -81,9 +80,9 @@ export default function CategorySlide() {
             <Slide>
             {  
                 categoryList.map((c,i)=>{
-                return <button  key={i} onClick={()=>{handleCategory(c)}}>
+                return <button  key={c.id} onClick={()=>{handleCategory(c)}}>
                             <option>
-                            {c}
+                            {c.name}
                             </option>
                         </button>
                 })

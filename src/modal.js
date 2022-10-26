@@ -10,15 +10,13 @@ export const ModalBackground=styled('div')({
     height: '100%',
     overflow: 'auto',
     backgroundColor: '#654d4d48',
-  //   backgroundColor: 'rgba(0,0,0,0.4)',
 })
 
 export const ModalContent=styled('div')({
     background: 'white',
     zIndex:'1',
     borderRadius:'20px',
-    // WebkitAnimation:'modal 0.4s',
-    animation: 'modal 0.4s',
+    animation: 'modal 0.35s ease-in-out',
     margin: '100px auto',
     padding: '50px 0',
     maxWidth:'380px',
@@ -31,8 +29,6 @@ export const ModalCloseBtn = styled('button')({
     border:'none',
     borderRadius:'20px',
     margin: '-35px 12px 0 0',
-    WebkitTransition:'all 0.2s linear',
-    transition: 'all 0.2s linear',
     textAlign:'right',
     cursor: 'pointer',
     float: 'right',

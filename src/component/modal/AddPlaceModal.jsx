@@ -2,7 +2,9 @@ import { styled } from '@mui/material';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { useState, useRef } from 'react';
 import { ModalContent, ModalCloseBtnBox, ModalCloseBtn, ModalHeaderBox, UserInput, InputBox, InputLabel, NotValidAlert, ModalButton } from '../../modal';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
+import { postThingSuccess } from '../../redux/modules/user';
 
 const UserInputSelect = styled('select')({
     borderRadius:'10px',
@@ -25,9 +27,25 @@ const UserInputSelect = styled('select')({
 })
 
 
-export default function AddPlaceModal({handleModalOpen}) {
-    const handleAddPlace = () =>{
+export default function AddThingModal({handleModalOpen}) {
+    const dispatch = useDispatch();
+
+    const handleAddThing = () =>{
         validInputValues();
+
+        const data={
+            name:placeName,
+            categoryId:selectRef.current.value,
+            comment:comment,
+            email:email
+        }
+        console.log(data);
+        async function handleAddThing(){
+            await axios.post("/api/user/thing",data)
+                    .then((resp)=>{dispatch(postThingSuccess(resp.data)); handleModalOpen()})
+                    .catch((error)=>{alert(error.response.data.error)})
+        }
+        handleAddThing()
     }
     const validInputValues = () =>{
         if(placeName.length > 10 || placeName.length === 0){
@@ -46,7 +64,7 @@ export default function AddPlaceModal({handleModalOpen}) {
     const selectRef = useRef("");
     const [placeName,setPlaceName] = useState("");
     const [comment,setComment] = useState("");
-    const categoryList = useSelector(state => state.login.userInfo.categories);
+    const {categories,email} = useSelector(state => state.user.userInfo);
     return(
         <ModalContent>
             <ModalCloseBtnBox>
@@ -56,7 +74,7 @@ export default function AddPlaceModal({handleModalOpen}) {
                     <HighlightOffIcon  sx={{
                         '&:hover':{
                             color:'#e75555',
-                            animation: 'modalSpin 0.5s linear',
+                            animation: 'modalSpin 0.3s linear',
                         } 
                     }}fontSize='large'/>
                 </ModalCloseBtn>
@@ -88,9 +106,9 @@ export default function AddPlaceModal({handleModalOpen}) {
                     <InputLabel>카테고리 설정</InputLabel>
                     <UserInputSelect ref={selectRef} defaultValue={"404"}>
                         <option value="404"  disabled>카테고리 선택</option>
-                        {categoryList.map(
-                            (c,i)=>
-                            <option key={i} value={i} >{c}</option>
+                        {categories.map(
+                            (c)=>
+                            <option key={c.id} value={c.id} >{c.name}</option>
                         )}
                     </UserInputSelect>
                 </div>
@@ -113,7 +131,7 @@ export default function AddPlaceModal({handleModalOpen}) {
                         </>
                     }
                 </div>
-                <ModalButton onClick={()=>{handleAddPlace()}}>장소 추가</ModalButton>
+                <ModalButton onClick={()=>{handleAddThing()}}>장소 추가</ModalButton>
             </InputBox>
         </ModalContent>
     );

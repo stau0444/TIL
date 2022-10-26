@@ -1,9 +1,9 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import login from './modules/login';
+import user from './modules/user';
 import detail from './modules/detail';
 
 const mainReducer = combineReducers({
-    login,
+    user,
     detail,
 })
 

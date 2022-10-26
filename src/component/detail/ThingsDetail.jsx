@@ -1,4 +1,5 @@
 import { Box, Grid, styled, Typography,Skeleton } from "@mui/material";
+import { fontSize } from "@mui/system";
 import { useSelector } from 'react-redux';
 import ReceiptSkeleton from '../modal/ReceiptSkeleton';
 
@@ -10,7 +11,7 @@ const ThingsDetailGrid = styled(Grid)({
 
 const ThingsDetailsBox = styled(Box)({
     margin:'10px auto',
-    maxWidth:'400px',
+    maxWidth:'410px',
     background: '#eff0e5',
     boxShadow: '10px 10px 10px #4b46464b',
     borderRadius:'20px',
@@ -123,7 +124,23 @@ const OneLineReviewBox=styled('div')({
         color:'gray'
     }
 })
-export default function ThingsDetail() {
+const AddReceiptBtn = styled('button')({
+     color: '#728583',
+     fontWeight:'bold',
+     fontFamily:"'NanumSquare' , san-serif",
+     fontSize:"3px",
+     cursor: 'pointer',
+     padding:'3px 4px',
+     margin:"10px",
+     borderRadius:"20px",
+     transition:"all 0.2s linear",
+     border:'1px solid gray',
+     "&:hover":{
+        color:"coral",
+        border:'1px solid coral',
+     }
+})
+export default function ThingsDetail({handleModalOpen}) {
     
     const {loading,receiptList,name,comment,visitTime} = useSelector(state => state.detail)
     const NAVER_SEARCH_URL = 'https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query='
@@ -166,6 +183,7 @@ export default function ThingsDetail() {
                             </div>
                             <div>
                                 <small>comments</small>
+                                <AddReceiptBtn onClick={()=>{handleModalOpen("add-receipt")}}>영수증 추가 +</AddReceiptBtn>
                             </div>
                         </ThingsDetailHeader>
                         <CommentListBox>
@@ -185,7 +203,7 @@ export default function ThingsDetail() {
                                                       }
                                                 }}>
                                                     <CommentLeft>
-                                                        <p className='comment-menu'>메뉴: {c.menu.map(m=>m+",")}</p>
+                                                        {/* <p className='comment-menu'>메뉴: {c.menu.map(m=>m+",")}</p> */}
                                                         <p className='comment-content'>{c.comment}</p>
                                                     </CommentLeft>
                                                     <CommentRight>

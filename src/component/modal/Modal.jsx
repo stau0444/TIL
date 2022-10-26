@@ -6,6 +6,7 @@ import SignUpModal from './SignUpModal';
 import FindIdModal from './FindIdModal';
 import FindPwdModal from './FindPwdModal';
 import { ModalBackground } from '../../modal';
+import AddReceiptModal from './AddReceiptModal';
 
 
 const ModaBackgroundWrapper= (props)=>{
@@ -29,6 +30,8 @@ export default function Modal({mode ,handleModalOpen}) {
         return  <ModaBackgroundWrapper comp={<FindIdModal handleModalOpen={handleModalOpen}/>}/>
         case "find-pwd":    
         return  <ModaBackgroundWrapper comp={<FindPwdModal handleModalOpen={handleModalOpen}/>}/>         
+        case "add-receipt":
+        return <ModaBackgroundWrapper comp={<AddReceiptModal handleModalOpen={handleModalOpen}/>}/>
         default:
             return  <ModaBackgroundWrapper comp={<SignUpModal handleModalOpen={handleModalOpen}/>}/>;
     }

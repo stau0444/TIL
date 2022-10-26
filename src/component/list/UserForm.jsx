@@ -6,8 +6,8 @@ import { styled } from '@mui/material';
 
 const UserFormBox = styled('div')({
     margin:'10px auto',
-    maxWidth:'428px',
-    // minWidth:'428px',
+    maxWidth:'438px',
+    position: 'relative',
     height: '80px',
     background: '#eff0e5',
     marginBottom:'10px',
@@ -86,17 +86,20 @@ const UserFunctionLink = styled('a')({
     fontSize:'13px',
     color: '#695a5ac8',
     fontWeight:'bold',
-    
 })
 const UserInfo =styled('div')({
+    position: 'absolute',
+    boxShadow: '10px 10px 10px #4b46464b',
+    borderBottom:'3px solid #423c3c41',
+    borderRight:'3px solid #55505041',
+    top:'-46px',
+    right: '-20px',
     display: 'flex',
     alignItems:'center',
     animation: 'swing-in-bottom-bck 1.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both',
     color: 'gray',
-    border: '1px solid #b3dea8',
     borderRadius:'20px',
-    height: "30%",
-    padding:'4px 7px',
+    padding:'4px 10px',
     background: 'palegreen',
     marginRight:'18px',
     marginLeft:'3px',
@@ -108,13 +111,15 @@ const UserInfo =styled('div')({
     },
     '&>.user-id':{
         fontFamily: "'Alata', sans-serif",   
-        fontSize:'13px',
+        fontSize:'11px',
+        
         // fontWeight:'bold',
         marginRight: '3px',
     }
 })
 const ContentSlogun = styled('div')({
     color: '#695a5ac8',
+    display:'flex',
     fontSize: '8px',
     float:'right',
     marginRight:'10px',
@@ -123,12 +128,11 @@ const ContentSlogun = styled('div')({
 
 
 export default function UserForm({handleModalOpen}) {
-    const isLogin = useSelector(state=>state.login.login);
-    const {email} = useSelector(state=>state.login.userInfo);   
-            
+    const {login,userInfo} = useSelector(state=>state.user);
     return(
         <>  
-            <UserFormBox >
+            <UserFormBox>
+
                 <ContentLogoBox className='content-logoBox'>
                     <ContentImageBox className='content-imageBox'>
                         <ContentLogoImage className='content-logo' src='/tilLogo.png' alt=''/>
@@ -138,11 +142,19 @@ export default function UserForm({handleModalOpen}) {
                 <ContentLoginBox>
                     <ContentSlogun className='content-slogun'>
                                 <small>내가 좋아하는 것들만 저장해요! 🍔 🌮 🍷  ☕️  🥩</small>
+                                {
+                                        login?
+                                        <UserInfo sx={{right:""}}>
+                                            <p className='user-id'>{userInfo.email}</p>
+                                            <img className='user-thumb' src="logo192.png" alt="" />
+                                        </UserInfo>
+                                        :
+                                        ""
+                                }
                     </ContentSlogun>
                     <LoginBox>
-                        {console.log(isLogin)}
                         {   
-                            isLogin?
+                            login?
                             <>
                                 <UserFunctionLink href="#" alt="" onClick={()=>{handleModalOpen("update-category")}}>카테고리 수정 &nbsp; | </UserFunctionLink>
                                 <UserFunctionLink href="#" alt="" onClick={()=>{handleModalOpen("add-place")}}>장소추가 &nbsp; |</UserFunctionLink>
@@ -166,15 +178,6 @@ export default function UserForm({handleModalOpen}) {
                         {/* login 이전 ui */}
                     </LoginBox>
                 </ContentLoginBox>
-                {
-                    isLogin?
-                    <UserInfo>
-                        <p className='user-id'>{email}</p>
-                        <img className='user-thumb' src="logo192.png" alt="" />
-                    </UserInfo>
-                    :
-                    ""
-                }
             </UserFormBox>    
         </>
     );

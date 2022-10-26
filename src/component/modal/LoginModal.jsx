@@ -3,7 +3,7 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { ModalContent, ModalCloseBtnBox, ModalCloseBtn, ModalHeaderBox, InputBox, UserInput, InputLabel, ModalButton } from '../../modal';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { postLoginFail, postLoginStart, postLoginSuccess } from '../../redux/modules/login';
+import { postLoginFail, postLoginStart, postLoginSuccess } from '../../redux/modules/user';
 import {useRef } from 'react';
 
 
@@ -21,17 +21,15 @@ export default function LoginModal({handleModalOpen}) {
     const handleLogin = () =>{
         async function handleLogin(){
             dispatch(postLoginStart())
-
             await axios
                     .post('/api/user/login',{email:emailRef.current.value , pwd:pwdRef.current.value})        
                     .then((resp)=>{
-                        console.log('success',resp.data);
                         dispatch(postLoginSuccess(resp.data));
                         handleModalOpen();
                     })
                     .catch((error)=>{
                         dispatch(postLoginFail());
-                        alert(error);
+                        alert(error.response.data);
                     });
         }
         handleLogin();
@@ -46,8 +44,8 @@ export default function LoginModal({handleModalOpen}) {
                     <HighlightOffIcon  sx={{
                         '&:hover':{
                             color:'#e75555',
-                            animation: 'modalSpin 0.5s linear',
-                            WebkitAnimation:'modalSpin 0.5s linear',
+                            animation: 'modalSpin 0.3s linear',
+                            WebkitAnimation:'modalSpin 0.3s linear',
                         } 
                     }}fontSize='large'/>
                 </ModalCloseBtn>

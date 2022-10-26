@@ -24,8 +24,10 @@ const TextLine = styled('hr')(({
     animation: 'modal 0.5s linear',
 }));
 
+
+
 const AnimatedLogo = (props)=>{
-    return  <>
+        return  <>
                 <Typography
                     sx={{
                         animation: {xs:'shadow-pop-tr 0.8s both',lg:'shadow-pop-tr2 0.8s both'},

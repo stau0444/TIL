@@ -12,7 +12,7 @@ const ThingsListGrid = styled(Grid)({
 
 const ThingsListBox= styled('div')({
     margin:'0px auto',
-    maxWidth:'400px',
+    maxWidth:'410px',
     padding: '14px',
     borderRadius:'20px',
     background: '#eff0e5',
