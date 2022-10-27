@@ -1,8 +1,7 @@
 import { Box, Grid, styled, Typography,Skeleton } from "@mui/material";
-import { fontSize } from "@mui/system";
 import { useSelector } from 'react-redux';
 import ReceiptSkeleton from '../modal/ReceiptSkeleton';
-
+import ReceiptList, { ReceiptListBox } from './ReceiptList';
 
 const ThingsDetailGrid = styled(Grid)({
     paddingTop:'11px',
@@ -79,42 +78,8 @@ const ThingsDetailTitle = styled('h3')({
     borderRight:'2px solid gray'
     
 })
-const CommentListBox = styled('div')({
-    border: '1px solid gray',
-    borderRadius:'20px',
-    padding: '0 10px',
-    maxHeight:'416px',
-    marginTop:'15px',
-    overflowY:'scroll'
-})
-const CommentBox = styled('div')({
-    border: '1px solid gray',
-    borderRadius:'20px',
-    marginBottom:'10px', 
-    padding:'10px',
-    display: 'flex',
-})
-const CommentLeft=styled('div')({
-    width: '70%',
-    marginLeft:'5px',
-    '& > .comment-content':{
-        fontSize:'12px',
-        marginTop:'5px'
-    },
-    '& > .comment-menu':{
-        fontSize:'10px',
-        color:'gray',
-        margin:'3px 0'
-    },
-})
-const CommentRight=styled('div')({
-    width: '30%',
-    display: 'flex',
-    justifyContent:'center',
-    alignItems:'center',
-    fontSize: '12px',
-    color:'gray',    
-})
+
+
 const OneLineReviewBox=styled('div')({
     '&>.my-review':{
         fontSize:'14px',
@@ -140,10 +105,16 @@ const AddReceiptBtn = styled('button')({
         border:'1px solid coral',
      }
 })
+
+const NoReceiptImg=styled('img')({
+    position: 'absolute',
+    top:'110px'
+})
 export default function ThingsDetail({handleModalOpen}) {
-    
     const {loading,receiptList,name,comment,visitTime} = useSelector(state => state.detail)
+    const {login} = useSelector(state => state.user);
     const NAVER_SEARCH_URL = 'https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query='
+
     return(
         <>
             <ThingsDetailGrid item xs={12} lg={4} >
@@ -153,13 +124,13 @@ export default function ThingsDetail({handleModalOpen}) {
                             xs:'modal 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940)',
                             lg:'modal1 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) '
                           }
-                    }}>
+                     }}>
                         <ThingsDetailHeader>
                             <div>
                                 {
                                     loading?
                                     <>
-                                        <Skeleton sx={{width:"100px",height:"45px",padding:"0"}} animation="wave"/>
+                                        <Skeleton sx={{width:"100px",height:"40px",padding:"0"}} animation="wave"/>
                                         <Skeleton sx={{width:"200px",height:"30px",marginBottom:"10px",marginTop:"-5px"}} animation="wave"/>
                                     </>
                                     :
@@ -183,38 +154,23 @@ export default function ThingsDetail({handleModalOpen}) {
                             </div>
                             <div>
                                 <small>comments</small>
-                                <AddReceiptBtn onClick={()=>{handleModalOpen("add-receipt")}}>영수증 추가 +</AddReceiptBtn>
+                                {login?<AddReceiptBtn onClick={()=>{handleModalOpen("add-receipt")}}>영수증 추가 +</AddReceiptBtn>:""}
                             </div>
                         </ThingsDetailHeader>
-                        <CommentListBox>
-                            <ul>
-                                {   
-                                loading?
-                                    <>
-                                      <ReceiptSkeleton num={11}/>  
-                                    </>
+                        {
+                            loading?
+                                <ReceiptListBox>
+                                    <ReceiptSkeleton num={11}/>  
+                                </ReceiptListBox>
                                 :
-                                    receiptList.map((c,i)=>{
-                                    return  <li key={i}>
-                                                <CommentBox sx={{
-                                                    animation: {
-                                                        xs:'swing-in-bottom-bck 0.9s cubic-bezier(0.250, 0.460, 0.450, 0.940)',
-                                                        lg:'swing-in-bottom-bck1 0.9s cubic-bezier(0.250, 0.460, 0.450, 0.940) '
-                                                      }
-                                                }}>
-                                                    <CommentLeft>
-                                                        {/* <p className='comment-menu'>메뉴: {c.menu.map(m=>m+",")}</p> */}
-                                                        <p className='comment-content'>{c.comment}</p>
-                                                    </CommentLeft>
-                                                    <CommentRight>
-                                                        <span>{c.visitDate}</span>
-                                                    </CommentRight>
-                                                </CommentBox>
-                                            </li>
-                                    })
-                                }
-                            </ul>
-                        </CommentListBox>
+                                receiptList.length === 0?
+                                <ReceiptListBox sx={{display:'flex',justifyContent:'center',alignItems:'center',position:'relative'}}>
+                                    <NoReceiptImg src="noReceipt.png" alt="" width="100px"/>
+                                    <Typography sx={{color:'gray',marginTop:'100px'}}variant="p"> 등록된 영수증이 없습니다. 영수증을 추가해 주세요!</Typography>
+                                </ReceiptListBox>
+                                :
+                                <ReceiptList receiptList={receiptList}/>
+                        }
                     </ThingsDeatailsInner>
                 </ThingsDetailsBox>
             </ThingsDetailGrid>

@@ -5,6 +5,7 @@ import { ModalContent, ModalCloseBtnBox, ModalCloseBtn, ModalHeaderBox, UserInpu
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { postThingSuccess } from '../../redux/modules/user';
+import LoyaltyIcon from '@mui/icons-material/Loyalty';
 
 const UserInputSelect = styled('select')({
     borderRadius:'10px',
@@ -39,7 +40,6 @@ export default function AddThingModal({handleModalOpen}) {
             comment:comment,
             email:email
         }
-        console.log(data);
         async function handleAddThing(){
             await axios.post("/api/user/thing",data)
                     .then((resp)=>{dispatch(postThingSuccess(resp.data)); handleModalOpen()})
@@ -79,8 +79,9 @@ export default function AddThingModal({handleModalOpen}) {
                     }}fontSize='large'/>
                 </ModalCloseBtn>
             </ModalCloseBtnBox>
-            <ModalHeaderBox>
+            <ModalHeaderBox sx={{display:'flex' ,alignItems:'center',justifyContent:'center'}}>
                 <p>장소추가</p>
+                <LoyaltyIcon sx={{fontSize:'20px',color:'#80ce6f',marginLeft:'5px'}}/>
             </ModalHeaderBox>
             <InputBox>
                 <div>

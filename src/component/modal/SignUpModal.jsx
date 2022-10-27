@@ -20,14 +20,12 @@ export default function SignUpModal({handleModalOpen}) {
     const [signUpSuccess,setSignUpSuccess] = useState(false);
 
     const handleSignUp = () =>{
-        console.log('handle-sign-up')
         //input값들 검증하고
         validInputValues();
         //가입 요청
         axios
         .post('http://localhost:8080/api/user',{email:email,password:pwd})        
         .then((resp)=>{
-            console.log(resp.data)
             setSignUpSuccess(true);
         })
         .catch((error)=>{alert(error.response.data)});

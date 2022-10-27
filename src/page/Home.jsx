@@ -4,6 +4,7 @@ import ThingsDetail from '../component/detail/ThingsDetail';
 import { useState } from 'react';
 import Modal from '../component/modal/Modal';
 import { styled, Grid } from '@mui/material';
+import { useSelector } from 'react-redux';
 
 
  const  HomeContainer = styled(Grid)({
@@ -16,6 +17,8 @@ import { styled, Grid } from '@mui/material';
 
 
 export default function Home() {
+    const login = useSelector(state => state.user.login)
+    const {clickedThing} =useSelector(state=>state.user.userInfo)
     const [isModalOpen,setIsModalOpen] = useState({mode:"",isOpen:false});
     const handleModalOpen = (props) =>{
         if(props === "sign-up" || props === "find-pwd" || props === "find-id"){
@@ -41,7 +44,13 @@ export default function Home() {
 
                 <LogoText/>
                 <ThingsList handleModalOpen={handleModalOpen}/>
-                <ThingsDetail handleModalOpen={handleModalOpen}/>
+                {
+                    
+                    login&&clickedThing>0?
+                    <ThingsDetail handleModalOpen={handleModalOpen}/>
+                    :
+                    ""
+                }
             </HomeContainer>
         </>
     );

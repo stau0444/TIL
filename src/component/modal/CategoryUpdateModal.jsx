@@ -6,6 +6,8 @@ import { ModalContent, ModalCloseBtnBox, ModalCloseBtn, InputBox, UserInput } fr
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { postCategorySuccess, deleteCategorySuccess } from '../../redux/modules/user';
+import { resetDetail } from '../../redux/modules/detail';
+import CategoryIcon from '@mui/icons-material/Category';
 
 const CategoryListBox = styled('div')({
     textAlign:'center',
@@ -105,7 +107,7 @@ export default function CategoryUpdateModal({handleModalOpen}) {
     const handleDeleteCategory=(id)=>{
         async function handleDeleteCategory(){
             await axios.delete(`/api/user/category/${id}`)
-            .then((resp)=>{dispatch(deleteCategorySuccess(resp.data.id))})
+            .then((resp)=>{dispatch(deleteCategorySuccess(resp.data.id));dispatch(resetDetail())})
             .catch((error)=>console.log(error))
         }
         handleDeleteCategory();
@@ -125,8 +127,9 @@ export default function CategoryUpdateModal({handleModalOpen}) {
                         }}fontSize='large'/>
                     </ModalCloseBtn>
                 </ModalCloseBtnBox>
-                <ModalHeaderBox>
+                <ModalHeaderBox sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                     <p>카테고리 목록</p>
+                    <CategoryIcon sx={{fontSize:'20px',color:'#80ce6f',marginLeft:'5px'}}/>
                 </ModalHeaderBox>
                 <Typography sx={{
                     fontSize:'10px',

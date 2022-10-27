@@ -146,7 +146,7 @@ export default function UserForm({handleModalOpen}) {
                                         login?
                                         <UserInfo sx={{right:""}}>
                                             <p className='user-id'>{userInfo.email}</p>
-                                            <img className='user-thumb' src="logo192.png" alt="" />
+                                            <img height="21px" className='user-thumb' src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="" />
                                         </UserInfo>
                                         :
                                         ""

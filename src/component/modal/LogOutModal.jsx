@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { postLogOut } from '../../redux/modules/user';
 import { resetDetail } from '../../redux/modules/detail';
-
+import { Box } from '@mui/material';
 
 export default function LogOutModal({handleModalOpen}) {
     const dispatch = useDispatch();
@@ -13,7 +13,6 @@ export default function LogOutModal({handleModalOpen}) {
             axios.post("/api/user/logout",{userId:1})
             .then((resp)=>{console.log(resp)})
             .catch((resp)=>{
-                console.log(resp);
                 dispatch(postLogOut());
                 dispatch(resetDetail())
                 handleModalOpen();
@@ -36,8 +35,11 @@ export default function LogOutModal({handleModalOpen}) {
                 }}fontSize='large'/>
             </ModalCloseBtn>
         </ModalCloseBtnBox>
-        <ModalHeaderBox>
-            <p>로그아웃 하시겠습니까?</p>
+        <ModalHeaderBox sx={{marginBottom:'0'}}>
+            <Box sx={{display:'flex',color:'gray',justifyContent:'center',}}>
+                <p>로그아웃 하시겠습니까?</p>
+                
+            </Box>
             <ModalButton onClick={()=>{handleLogOut()}}sx={{marginTop:'50px'}}>네</ModalButton>
         </ModalHeaderBox>
     </ModalContent>

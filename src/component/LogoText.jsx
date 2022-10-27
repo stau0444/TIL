@@ -1,6 +1,6 @@
 
 import { Box, Grid, Typography, styled } from '@mui/material';
-
+import { useSelector } from 'react-redux';
 
 const LogoTextGrid = styled(Grid)({
     borderRadius:'20px',
@@ -32,7 +32,7 @@ const AnimatedLogo = (props)=>{
                     sx={{
                         animation: {xs:'shadow-pop-tr 0.8s both',lg:'shadow-pop-tr2 0.8s both'},
                         fontSize: '60px',
-                        color: '#bbe4e8',
+                        color: '#9be8ef',
                         // color: "#b3ded2",
                         fontFamily: "'Alata', sans-serif",
                     }}
@@ -53,13 +53,14 @@ const AnimatedLogo = (props)=>{
 
 
 export default function LogoText() {
+    const login = useSelector(state=>state.user.login);
     return( 
         <>
             <LogoTextGrid item  
                 xs={12} 
                 lg={2} 
                 sx={{
-                    marginRight:{lg:'30px'},
+                    marginRight:{lg:login?'30px':'80px'},
                     marginLeft:{xs:"5px"}
                 }}>
                 <Box>

@@ -4,6 +4,8 @@ const GET_DETAIL_FAIL = "thingilove/DETAIL/GET_DETAIL_FAIL";
 
 const RESET_DETAIL = "thingilove/DETAIL/RESET_DETAIL";
 
+const POST_RECEIPT_SUCCESS = "thingilove/DETAIL/POST_RECEIPT_SUCCESS"
+
 export function getDetailStart(){
     return{
         type:GET_DETAIL_START,
@@ -31,6 +33,13 @@ export function getDetailFail(){
     }
 }
 
+export function postReceiptSuccess(receipt){
+    return{
+        type:POST_RECEIPT_SUCCESS,
+        receipt
+    }
+}
+
 const initialState = {
   name:"",
   comment:"",
@@ -44,7 +53,6 @@ export default function  reducer(state = initialState, action) {
         return {...initialState,loading:action.loading};
     } 
     if(action.type === GET_DETAIL_SUCCESS){
-        
         return {
             loading:action.loading,
             ...action.detail,
@@ -57,5 +65,12 @@ export default function  reducer(state = initialState, action) {
         return {...initialState};
     }
 
+    if(action.type === POST_RECEIPT_SUCCESS){
+        return{
+            ...state,
+            visitTime:state.visitTime+1,
+            receiptList:[...state.receiptList , action.receipt]
+        }
+    }
     return state;
 }

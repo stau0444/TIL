@@ -3,6 +3,8 @@ import CategorySlide from './CategorySlide';
 import { useSelector, useDispatch } from 'react-redux';
 import { getDetailStart, getDetailSuccess, getDetailFail } from '../../redux/modules/detail';
 import axios from "axios";
+import ListBeforeLogin from './ListBeforeLogin';
+import { clickThing } from "../../redux/modules/user";
 
 
 const ThingsListBox = styled('div')({
@@ -43,16 +45,18 @@ const ThigsItem = styled('li')({
 
 
 export default function ThingsListBody() {
-    const state = useSelector(state=>state);
-    const thingsList = useSelector(state=>state.user.userInfo.things);
+    
+    const login = useSelector(state=>state.user.login);
+    const {things,clickedThing} = useSelector(state=>state.user.userInfo);
     const dispatch = useDispatch();
+    
     const handleThingDetail = (id) =>{
+        dispatch(clickThing(id));
         async function handleThingDetail(){
           dispatch(getDetailStart());
           await axios.get('/api/user/content/'+id)
           .then((resp)=>{
             setTimeout(()=>{dispatch(getDetailSuccess(resp.data)); console.log("loading")},3000);
-            console.log(state);
           })
           .catch((resp)=>{
             dispatch(getDetailFail());
@@ -62,32 +66,40 @@ export default function ThingsListBody() {
     }
     return(
         <>
-            <CategorySlide/>
-            <ThingsListBox>
-                <ul>
-                  {
-                    thingsList.map((t,i)=>{
-                      return <ThigsItem 
-                                key={i}
-                                sx={{
-                                  animation: {
-                                    xs:'swing-in-bottom-bck 0.9s cubic-bezier(0.250, 0.460, 0.450, 0.940)',
-                                    lg:'swing-in-bottom-bck1 0.9s cubic-bezier(0.250, 0.460, 0.450, 0.940) '
-                                  },
-                                }}
-                                >
-                                <a href="#detail" onClick={()=>{handleThingDetail(t.id)}}>
-                                  <div className='list-item'>
-                                      <h3 className='list-title'>{t.name}</h3>
-                                      <small className='list-description'>{t.comment}</small>
-                                  </div>
-                                </a>  
-                             </ThigsItem>
-                    })
-                  }
-                </ul>
-
-              </ThingsListBox>
+            {
+              login?
+                <>
+                  <CategorySlide/>
+                  <ThingsListBox>
+                    <ul>
+                      {
+                        things.map((t)=>{
+                          return <ThigsItem 
+                                    key={t.id}
+                                    sx={{
+                                      animation: {
+                                        xs:'swing-in-bottom-bck 0.9s cubic-bezier(0.250, 0.460, 0.450, 0.940)',
+                                        lg:'swing-in-bottom-bck1 0.9s cubic-bezier(0.250, 0.460, 0.450, 0.940) '
+                                      },
+                                      background: t.id===clickedThing? '#b2fbe9':"#eff0e5",
+                                    }}
+                                    >
+                                    <a href="#detail" onClick={()=>{handleThingDetail(t.id);}}>
+                                      <div className='list-item'>
+                                          <h3 className='list-title'>{t.name}</h3>
+                                          <small className='list-description'>{t.comment}</small>
+                                      </div>
+                                    </a>  
+                                </ThigsItem>
+                        })
+                      }
+                    </ul>
+                  </ThingsListBox>
+                </>  
+              :
+              <ListBeforeLogin/>
+            }
+            
         </>
     );
 }

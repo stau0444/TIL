@@ -10,6 +10,9 @@ const DELETE_CATEGORY_FAIL = "thingilove/user/DELETE_CATEGORY_FAIL"
 
 const POST_THING_SUCCESS = "thingilove/user/POST_THING_SUCCESS"
 
+const CLICK_THING = "thingilove/user/CLICK_THING"
+
+
 export function postLogOut(){
     return{
         type:POST_LOGOUT,
@@ -74,6 +77,12 @@ export function postThingSuccess(thing){
         thing
     }
 }
+export function clickThing(id){
+    return{
+        type:CLICK_THING,
+        id
+    }
+}
 const initialState = {
     login:false,
     userInfo:{
@@ -82,7 +91,8 @@ const initialState = {
         profileUrl:"",
         createdAt: "",
         categories:[],
-        things:[]
+        things:[],
+        clickedThing:0
     }
 };
 
@@ -144,12 +154,21 @@ export default function  reducer(state = initialState, action) {
         }
     }
     if(action.type === POST_THING_SUCCESS){
-        console.log('state',state);
         return{
             login:state.login,
             userInfo:{
                 ...state.userInfo,
                 things:[...state.userInfo.things , action.thing]
+            }
+        }
+    }
+
+    if(action.type === CLICK_THING){
+        return{
+            login:state.login,
+            userInfo:{
+                ...state.userInfo,
+                clickedThing:action.id
             }
         }
     }
