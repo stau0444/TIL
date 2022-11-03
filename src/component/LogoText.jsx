@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 const LogoTextGrid = styled(Grid)({
     borderRadius:'20px',
+    
     padding: "10px",
     '&>div':{
         marginBottom:'20px',
@@ -22,6 +23,7 @@ const TextLine = styled('hr')(({
     boxShadow:'5px 5px 10px #020000',
     WebkitAnimation:'modal 0.5s linear',
     animation: 'modal 0.5s linear',
+    
 }));
 
 

@@ -10,9 +10,23 @@ const DELETE_CATEGORY_FAIL = "thingilove/user/DELETE_CATEGORY_FAIL"
 
 const POST_THING_SUCCESS = "thingilove/user/POST_THING_SUCCESS"
 
-const CLICK_THING = "thingilove/user/CLICK_THING"
+const GET_SEARCH_THING = "thingilove/thing/GET_SEARCH_THING"
 
+const CLICK_THING = "thingilove/thing/CLICK_THING"
 
+// const SESSION_ALIVED = "thingilove/user/SESSION_ALIVED";
+// const SESSION_EXPIRED = "thingilove/user/SESSION_EXPIRED";
+
+// export function sessionAlived(){
+//     return{
+//         type:SESSION_ALIVED
+//     }
+// }
+// export function sessionExpired(){
+//     return{
+//         type:SESSION_EXPIRED
+//     }
+// }
 export function postLogOut(){
     return{
         type:POST_LOGOUT,
@@ -81,6 +95,13 @@ export function clickThing(id){
     return{
         type:CLICK_THING,
         id
+    }
+}
+
+export function getSearchThing(things){
+    return{
+        type:GET_SEARCH_THING,
+        things,
     }
 }
 const initialState = {
@@ -172,6 +193,25 @@ export default function  reducer(state = initialState, action) {
             }
         }
     }
+    if(action.type === GET_SEARCH_THING){
+        return{
+                login:state.login,
+                userInfo:{
+                    ...state.userInfo,
+                    things:[...action.things]
+                }
+            }
+    }
+    // if(action.type === SESSION_ALIVED){
+    //     return{
+    //         ...state
+    //     }
+    // }
+    // if(action.type === SESSION_EXPIRED){
+    //     return{
+    //         ...initialState
+    //     }
+    // }
 
     return state;
 }

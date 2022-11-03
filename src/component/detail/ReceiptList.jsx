@@ -1,16 +1,16 @@
 import { styled } from '@mui/material';
 
 export const ReceiptListBox = styled('div')({
-    border: '1px solid gray',
+    border: '1px solid lightgray',
     borderRadius:'20px',
     padding: '0 10px',
     maxHeight:'400px',
-    minHeight:'400px',
+    minHeight: '400px',
     overflowY:'scroll'
 })
 
 export const ReceiptBox = styled('div')({
-    border: '1px solid gray',
+    border: '1px solid lightgray',
     borderRadius:'20px',
     marginBottom:'10px', 
     padding:'10px',

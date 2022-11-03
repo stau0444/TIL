@@ -1,6 +1,6 @@
 import LoginIcon from '@mui/icons-material/Login';
 import { useSelector } from 'react-redux';
-import { styled } from '@mui/material';
+import { styled,  } from '@mui/material';
 
 
 
@@ -35,6 +35,7 @@ const ContentLogoImage =styled('img')({
     width: '70px',
     border: '1px solid #78a150',
 })
+
 const ContentLogoDesc = styled('p')({
     margin: '0',
     marginTop: '-3px',
@@ -132,10 +133,11 @@ export default function UserForm({handleModalOpen}) {
     return(
         <>  
             <UserFormBox>
-
                 <ContentLogoBox className='content-logoBox'>
+                    {/* sx={{background:'#86940b4a',paddingBottom:'2px',borderRadius:'15px'}} */}
                     <ContentImageBox className='content-imageBox'>
                         <ContentLogoImage className='content-logo' src='/tilLogo.png' alt=''/>
+                        {/* <ContentLogoText  sx={{animation: {xs:'shadow-pop-tr 0.8s both',lg:'shadow-pop-tr2 0.8s both'},}} variant='p' >TIL</ContentLogoText> */}
                         <ContentLogoDesc className='content-logo-desc'>Things I Love</ContentLogoDesc>
                     </ContentImageBox>   
                 </ContentLogoBox>
@@ -156,7 +158,7 @@ export default function UserForm({handleModalOpen}) {
                         {   
                             login?
                             <>
-                                <UserFunctionLink href="#" alt="" onClick={()=>{handleModalOpen("update-category")}}>카테고리 수정 &nbsp; | </UserFunctionLink>
+                                <UserFunctionLink href="#" alt=""  onClick={()=>{handleModalOpen("update-category")}}>카테고리 수정 &nbsp; | </UserFunctionLink>
                                 <UserFunctionLink href="#" alt="" onClick={()=>{handleModalOpen("add-place")}}>장소추가 &nbsp; |</UserFunctionLink>
                                 <UserFunctionLink href="#" alt="" onClick={()=>{handleModalOpen("log-out")}}>로그아웃 </UserFunctionLink>
                             </>

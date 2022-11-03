@@ -32,6 +32,8 @@ export default function Modal({mode ,handleModalOpen}) {
         return  <ModaBackgroundWrapper comp={<FindPwdModal handleModalOpen={handleModalOpen}/>}/>         
         case "add-receipt":
         return <ModaBackgroundWrapper comp={<AddReceiptModal handleModalOpen={handleModalOpen}/>}/>
+        case "sign-up-bl":
+        return <ModaBackgroundWrapper comp={<SignUpModal handleModalOpen={handleModalOpen}/>}/>
         default:
             return  <ModaBackgroundWrapper comp={<SignUpModal handleModalOpen={handleModalOpen}/>}/>;
     }

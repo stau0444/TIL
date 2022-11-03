@@ -28,7 +28,7 @@ export default function ThingsList({handleModalOpen}) {
             <ThingsListGrid item xs={12} lg={4}>
                     <UserForm handleModalOpen={handleModalOpen}/>
                     <ThingsListBox>
-                        <ThingsListBody/>
+                        <ThingsListBody handleModalOpen={handleModalOpen}/>
                     </ThingsListBox>
             </ThingsListGrid>
         </>

@@ -93,7 +93,7 @@ export default function AddReceiptModal({handleModalOpen}) {
         async function handleAddReceipt(){
             axios.post('/api/user/receipt',data)
             .then((resp)=>{dispatch(postReceiptSuccess(resp.data));handleModalOpen();})
-            .catch((error)=>{alert(error.response.data)})
+            .catch((error)=>{alert(error)})
         }
         handleAddReceipt();
     }

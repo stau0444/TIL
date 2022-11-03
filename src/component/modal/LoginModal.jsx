@@ -21,15 +21,19 @@ export default function LoginModal({handleModalOpen}) {
     const handleLogin = () =>{
         async function handleLogin(){
             dispatch(postLoginStart())
+            const headers={
+                "Content-Type":"application/x-www-form-urlencoded",
+            }
             await axios
-                    .post('/api/user/login',{email:emailRef.current.value , pwd:pwdRef.current.value})        
+                    .post('/api/user/login',{email:emailRef.current.value , pwd:pwdRef.current.value},{headers:headers})        
                     .then((resp)=>{
                         dispatch(postLoginSuccess(resp.data));
                         handleModalOpen();
                     })
                     .catch((error)=>{
                         dispatch(postLoginFail());
-                        alert(error.response.data);
+                        // alert(error);
+                        console.log(error)
                     });
         }
         handleLogin();

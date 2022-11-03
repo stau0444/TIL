@@ -1,7 +1,7 @@
 import { Skeleton ,styled} from "@mui/material";
 
 const CommentBox = styled('div')({
-    border: '1px solid gray',
+    border: '1px solid lightgray',
     borderRadius:'20px',
     marginBottom:'10px', 
     padding:'10px',

@@ -1,6 +1,6 @@
 import { Box, Grid, styled, Typography,Skeleton } from "@mui/material";
 import { useSelector } from 'react-redux';
-import ReceiptSkeleton from '../modal/ReceiptSkeleton';
+import ReceiptSkeleton from './ReceiptSkeleton';
 import ReceiptList, { ReceiptListBox } from './ReceiptList';
 
 const ThingsDetailGrid = styled(Grid)({
@@ -43,7 +43,7 @@ const ThingsDetailHeader = styled('div')({
 const ThingsDetailInfo = styled('div')({
     fontSize:'12px',
     display: 'flex',
-    border:'1px solid gray',
+    border:'1px solid lightgray',
     padding: '8px 0px',
     paddingLeft:'5px',
     borderRadius:'20px',

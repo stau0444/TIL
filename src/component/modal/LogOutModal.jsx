@@ -1,6 +1,6 @@
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { ModalContent, ModalCloseBtnBox, ModalCloseBtn, ModalHeaderBox, ModalButton } from '../../modal';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { postLogOut } from '../../redux/modules/user';
 import { resetDetail } from '../../redux/modules/detail';
@@ -8,14 +8,20 @@ import { Box } from '@mui/material';
 
 export default function LogOutModal({handleModalOpen}) {
     const dispatch = useDispatch();
+    const email = useSelector(state => state.user.userInfo.email);
+    const headers={
+        "Content-Type":"application/x-www-form-urlencoded",
+    }
     const handleLogOut = () =>{
         async function handleLogOut(){
-            axios.post("/api/user/logout",{userId:1})
-            .then((resp)=>{console.log(resp)})
-            .catch((resp)=>{
+            axios.post("/logout",{headers:headers})
+            .then((resp)=>{
                 dispatch(postLogOut());
                 dispatch(resetDetail())
                 handleModalOpen();
+            })
+            .catch((resp)=>{
+                console.log(resp)
             })
         }
         handleLogOut();

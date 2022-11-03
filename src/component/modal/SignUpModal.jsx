@@ -24,11 +24,11 @@ export default function SignUpModal({handleModalOpen}) {
         validInputValues();
         //가입 요청
         axios
-        .post('http://localhost:8080/api/user',{email:email,password:pwd})        
+        .post('/api/user',{email:email,password:pwd})        
         .then((resp)=>{
             setSignUpSuccess(true);
         })
-        .catch((error)=>{alert(error.response.data)});
+        .catch((error)=>{console.log(error.resp)});
         //이메일 중복확인 후 중복시 alert처리
         
     }

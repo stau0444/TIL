@@ -5,15 +5,16 @@ import { getDetailStart, getDetailSuccess, getDetailFail } from '../../redux/mod
 import axios from "axios";
 import ListBeforeLogin from './ListBeforeLogin';
 import { clickThing } from "../../redux/modules/user";
+import ThingListEmpty from './ThingListEmpty';
 
 
 const ThingsListBox = styled('div')({
-  minHeight: '200px',
   maxHeight: '400px',
+  minHeight: '400px',
   overflow: 'scroll',
   padding: '0 10px',
   marginTop: '10px',
-  border: '1px solid gray',
+  border: '1px solid lightgray',
   borderRadius: '20px',
   '& .list-title':{
     margin: '3px 0',
@@ -29,7 +30,7 @@ const ThingsListBox = styled('div')({
 })
 const ThigsItem = styled('li')({
   padding: '10px',
-  border: '1px solid gray',
+  border: '1px solid lightgray',
   margin: '8px 0',
   borderRadius: '10px',
   /* background: rgba(240, 181, 171, 0.805); */
@@ -44,11 +45,13 @@ const ThigsItem = styled('li')({
 })
 
 
-export default function ThingsListBody() {
+export default function ThingsListBody({handleModalOpen}) {
+
     
     const login = useSelector(state=>state.user.login);
     const {things,clickedThing} = useSelector(state=>state.user.userInfo);
     const dispatch = useDispatch();
+    
     
     const handleThingDetail = (id) =>{
         dispatch(clickThing(id));
@@ -56,9 +59,11 @@ export default function ThingsListBody() {
           dispatch(getDetailStart());
           await axios.get('/api/user/content/'+id)
           .then((resp)=>{
-            setTimeout(()=>{dispatch(getDetailSuccess(resp.data)); console.log("loading")},3000);
+            setTimeout(()=>{console.log(resp.data);dispatch(getDetailSuccess(resp.data))},3000);
           })
           .catch((resp)=>{
+            console.log("thing detail", resp)
+
             dispatch(getDetailFail());
           })
         }
@@ -69,9 +74,13 @@ export default function ThingsListBody() {
             {
               login?
                 <>
-                  <CategorySlide/>
+                  <CategorySlide handleModalOpen={handleModalOpen}/>
                   <ThingsListBox>
-                    <ul>
+                    {
+                      things.length === 0 ?
+                      <ThingListEmpty/>
+                      :
+                      <ul>
                       {
                         things.map((t)=>{
                           return <ThigsItem 
@@ -84,7 +93,7 @@ export default function ThingsListBody() {
                                       background: t.id===clickedThing? '#b2fbe9':"#eff0e5",
                                     }}
                                     >
-                                    <a href="#detail" onClick={()=>{handleThingDetail(t.id);}}>
+                                    <a href="#detail" onClick={()=>handleThingDetail(t.id)}>
                                       <div className='list-item'>
                                           <h3 className='list-title'>{t.name}</h3>
                                           <small className='list-description'>{t.comment}</small>
@@ -94,10 +103,11 @@ export default function ThingsListBody() {
                         })
                       }
                     </ul>
+                    }
                   </ThingsListBox>
                 </>  
               :
-              <ListBeforeLogin/>
+              <ListBeforeLogin handleModalOpen={handleModalOpen}/>
             }
             
         </>

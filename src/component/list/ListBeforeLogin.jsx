@@ -26,7 +26,7 @@ const SignUpBtn = styled('button')({
     padding: '5px 10px',
     color: '#64b568',
     cursor: 'pointer',
-    border:'1px solid gray',
+    border:'1px solid lightgray',
     borderRadius:'20px',
     transition: 'all 0.3s linear',
     '&:hover':{
@@ -41,7 +41,7 @@ const TextBtnBox = styled('div')({
     top:'180px'
 })
 
-export default function ListBeforeLogin() {
+export default function ListBeforeLogin({handleModalOpen}) {
     return(
         <>
         <ReceiptListBox sx={{minHeight:'460px',borderColor:'#9eac99'}}>
@@ -50,7 +50,7 @@ export default function ListBeforeLogin() {
              <DecoImg src="deco.gif" alt=""/>
              <TextBtnBox>
                 <DecoText>나만의 리스트를 만들어보세요!</DecoText>
-                <SignUpBtn>회원 가입</SignUpBtn>
+                <SignUpBtn onClick={()=>{handleModalOpen("sign-up-bl")}}>회원가입 </SignUpBtn>
              </TextBtnBox>
             </DecoBox> 
            </ListBeforeLoginBox> 
