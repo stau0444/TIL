@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getDetailStart, getDetailSuccess, getDetailFail } from '../../redux/modules/detail';
 import axios from "axios";
 import ListBeforeLogin from './ListBeforeLogin';
-import { clickThing } from "../../redux/modules/user";
+import { clickThing, postLogOut } from "../../redux/modules/user";
 import ThingListEmpty from './ThingListEmpty';
 
 
@@ -59,11 +59,14 @@ export default function ThingsListBody({handleModalOpen}) {
           dispatch(getDetailStart());
           await axios.get('/api/user/content/'+id)
           .then((resp)=>{
-            setTimeout(()=>{console.log(resp.data);dispatch(getDetailSuccess(resp.data))},3000);
+            setTimeout(()=>{console.log("sessionexpired",resp.data);dispatch(getDetailSuccess(resp.data))},3000);
           })
-          .catch((resp)=>{
-            console.log("thing detail", resp)
-
+          .catch((error)=>{
+            if(error.response.status === 401){
+              alert("로그인 세션이 만료되었습니다. 다시 로그인 해주세요!")
+              dispatch(postLogOut())
+            }
+            console.log(error);
             dispatch(getDetailFail());
           })
         }

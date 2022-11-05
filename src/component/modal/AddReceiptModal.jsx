@@ -7,6 +7,7 @@ import ReceiptIcon from '@mui/icons-material/Receipt';
 import axios from "axios";
 import { useDispatch, useSelector } from 'react-redux';
 import { postReceiptSuccess } from '../../redux/modules/detail';
+import { postLogOut } from '../../redux/modules/user';
 
 
 const AddMenuBtn = styled('button')({
@@ -93,7 +94,14 @@ export default function AddReceiptModal({handleModalOpen}) {
         async function handleAddReceipt(){
             axios.post('/api/user/receipt',data)
             .then((resp)=>{dispatch(postReceiptSuccess(resp.data));handleModalOpen();})
-            .catch((error)=>{alert(error)})
+            .catch((error)=>{
+                if(error.response.status === 401){
+                    handleModalOpen();
+                    dispatch(postLogOut())
+                    alert("로그인 세션이 만료되었습니다. 다시 로그인 해주세요!")
+                }
+                console.log(error);
+            })
         }
         handleAddReceipt();
     }

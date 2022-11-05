@@ -3,7 +3,7 @@ import { styled } from '@mui/material';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios  from 'axios';
-import { getSearchThing } from '../../redux/modules/user';
+import { getSearchThing, postLogOut } from '../../redux/modules/user';
 
 const Slide = styled('div')({
     height: '30px',
@@ -15,6 +15,7 @@ const Slide = styled('div')({
     display: 'flex',
     minHeight: 'fit-content',
     overflowY: 'hidden',
+    scrollBehavior:'smooth',
     '&>button>option':{
       color: '#59b96e',
       fontWeight: 'bold',    
@@ -75,7 +76,13 @@ export default function CategorySlide() {
             const data = {...cond}
             await axios.get(`/api/user/content/search?category=${data.category.name}&sort=${data.sort}`)
                     .then((resp)=>{dispatch(getSearchThing(resp.data.thingList))})
-                    .catch((resp)=>{console.log(resp)})
+                    .catch((error)=>{
+                        if(error.response.status === 401){
+                            alert("로그인 세션이 만료되었습니다. 다시 로그인 해주세요!")
+                            dispatch(postLogOut())
+                        }
+                        console.log(error);
+                    })
         }
         handleSearch();
     }
@@ -111,7 +118,9 @@ export default function CategorySlide() {
                     </Slide>
                     :
                     <Slide>    
-                        <CategoryBtn sx={{
+                        <CategoryBtn
+                                    key={0} 
+                                    sx={{
                                         backgroundColor: searchCondition.category.name==="all"?'#b2fbe9':'whitesmoke',
                                         padding: '3px 10px',
                                         minWidth:'48px'

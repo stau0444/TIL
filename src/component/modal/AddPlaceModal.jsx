@@ -4,7 +4,7 @@ import { useState, useRef } from 'react';
 import { ModalContent, ModalCloseBtnBox, ModalCloseBtn, ModalHeaderBox, UserInput, InputBox, InputLabel, NotValidAlert, ModalButton } from '../../modal';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import { postThingSuccess } from '../../redux/modules/user';
+import { postThingSuccess, postLogOut } from '../../redux/modules/user';
 import LoyaltyIcon from '@mui/icons-material/Loyalty';
 
 const UserInputSelect = styled('select')({
@@ -43,7 +43,13 @@ export default function AddThingModal({handleModalOpen}) {
         async function handleAddThing(){
             await axios.post("/api/user/thing",data)
                     .then((resp)=>{dispatch(postThingSuccess(resp.data)); handleModalOpen()})
-                    .catch((error)=>{alert(error.response.data.error)})
+                    .catch((error)=>{
+                        if(error.response.status === 401){
+                            alert("로그인 세션이 만료되었습니다. 다시 로그인 해주세요!")
+                            dispatch(postLogOut())
+                        }
+                        console.log(error);
+                    })
         }
         handleAddThing()
     }

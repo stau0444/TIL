@@ -32,7 +32,6 @@ export default function LoginModal({handleModalOpen}) {
                     })
                     .catch((error)=>{
                         dispatch(postLoginFail());
-                        // alert(error);
                         console.log(error)
                     });
         }

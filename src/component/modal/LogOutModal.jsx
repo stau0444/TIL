@@ -20,8 +20,13 @@ export default function LogOutModal({handleModalOpen}) {
                 dispatch(resetDetail())
                 handleModalOpen();
             })
-            .catch((resp)=>{
-                console.log(resp)
+            .catch((error)=>{
+                if(error.response.status === 401){
+                    handleModalOpen();
+                    dispatch(postLogOut())
+                    alert("로그인 세션이 만료되었습니다. 다시 로그인 해주세요!")
+                }
+                console.log(error)
             })
         }
         handleLogOut();

@@ -30,7 +30,6 @@ export default function Home() {
     return(
         <>
             <HomeContainer container sx={{marginTop:{lg:"27px"}}}>
-                
                 {
                     isModalOpen.isOpen?
                         <Modal

@@ -5,7 +5,7 @@ import { styled, Button, Typography } from '@mui/material';
 import { ModalContent, ModalCloseBtnBox, ModalCloseBtn, InputBox, UserInput } from '../../modal';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import { postCategorySuccess, deleteCategorySuccess } from '../../redux/modules/user';
+import { postCategorySuccess, deleteCategorySuccess, postLogOut } from '../../redux/modules/user';
 import { resetDetail } from '../../redux/modules/detail';
 import CategoryIcon from '@mui/icons-material/Category';
 
@@ -99,7 +99,14 @@ export default function CategoryUpdateModal({handleModalOpen}) {
         async function handleCategorySubmit(){
             await axios.post("/api/user/category",{category:categoryRef.current.value,userEmail:email})
                     .then((resp)=>{dispatch(postCategorySuccess(resp.data));})
-                    .catch((resp)=>{alert("잘못된 값이 입력되었습니다.")})
+                    .catch((error)=>{
+                        if(error.response.status === 401){
+                            handleModalOpen();
+                            dispatch(postLogOut())
+                            alert("로그인 세션이 만료되었습니다. 다시 로그인 해주세요!")
+                        }
+                        console.log(error);
+                    })
         }
         handleCategorySubmit();
         categoryRef.current.value='';
@@ -108,7 +115,14 @@ export default function CategoryUpdateModal({handleModalOpen}) {
         async function handleDeleteCategory(){
             await axios.delete(`/api/user/category/${id}`)
             .then((resp)=>{dispatch(deleteCategorySuccess(resp.data.id));dispatch(resetDetail())})
-            .catch((error)=>console.log(error))
+            .catch((error)=>{
+                if(error.response.status === 401){
+                    handleModalOpen();
+                    dispatch(postLogOut())
+                    alert("로그인 세션이 만료되었습니다. 다시 로그인 해주세요!")
+                }
+                console.log(error)
+            })
         }
         handleDeleteCategory();
     }
