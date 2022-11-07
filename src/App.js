@@ -5,7 +5,7 @@ import Home from './page/Home';
 
 // axios.defaults.baseURL = 'http://localhost:8081';
 // axios.defaults.baseURL = 'http://3.37.32.130:8081';  
-axios.defaults.baseURL = 'https://blog.ugosdevblog.com';  
+axios.defaults.baseURL = 'http://15.165.130.26:8081';  
 axios.defaults.withCredentials=true;
 
 
