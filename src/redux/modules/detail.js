@@ -59,7 +59,6 @@ export default function  reducer(state = initialState, action) {
         };
     }
     if(action.type === GET_DETAIL_FAIL){
-        console.log("get_detail_fail")
         return {...initialState,loading:action.loading};
     }
     if(action.type === RESET_DETAIL){
