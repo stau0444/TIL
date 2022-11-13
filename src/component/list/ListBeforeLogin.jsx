@@ -48,7 +48,7 @@ export default function ListBeforeLogin({handleModalOpen}) {
         <ReceiptListBox sx={{minHeight:'460px',borderColor:'#9eac99'}}>
            <ListBeforeLoginBox>
             <DecoBox>
-             <DecoImg src="deco.gif" alt=""/>
+             <DecoImg className="decoImg" src="deco.gif" alt=""/>
              <TextBtnBox>
                 <DecoText>나만의 리스트를 만들어보세요!</DecoText>
                 <SignUpBtn onClick={()=>{handleModalOpen("sign-up-bl")}}>회원가입 </SignUpBtn>

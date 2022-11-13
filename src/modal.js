@@ -16,7 +16,7 @@ export const ModalContent=styled('div')({
     background: 'white',
     zIndex:'1',
     borderRadius:'20px',
-    animation: 'modal 0.35s ease-in-out',
+    animation: 'modal 0.35s linear',
     margin: '100px auto',
     padding: '50px 0',
     maxWidth:'380px',

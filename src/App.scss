@@ -5,7 +5,13 @@
 button{
   font-family:'NanumSquare' , san-serif !important;
 }
-
+.decoImg{
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
 
 @media only screen 
   and (min-device-width : 320px) 
