@@ -77,7 +77,7 @@ export default function ThingsListBody({handleModalOpen}) {
               login?
                 <>
                   <CategorySlide handleModalOpen={handleModalOpen}/>
-                  <ThingsListBox>
+                  <ThingsListBox >
                     {
                       things.length === 0 ?
                       <ThingListEmpty/>
@@ -95,7 +95,7 @@ export default function ThingsListBody({handleModalOpen}) {
                                       background: t.id===clickedThing? '#b2fbe9':"#eff0e5",
                                     }}
                                     >
-                                    <a href="#detail" onClick={()=>handleThingDetail(t.id)}>
+                                    <a href="#detail"  onClick={()=>handleThingDetail(t.id)}>
                                       <div className='list-item'>
                                           <h3 className='list-title'>{t.name}</h3>
                                           <small className='list-description'>{t.comment}</small>

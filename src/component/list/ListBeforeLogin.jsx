@@ -2,7 +2,6 @@ import { styled } from '@mui/material';
 import { ReceiptListBox } from '../detail/ReceiptList';
 
 const ListBeforeLoginBox = styled('div')({
-    height: '480px',
     display: 'flex',
     justifyContent:'center',
     alignItems:'center',
