@@ -14,9 +14,7 @@ const UserFormBox = styled('div')({
     borderRadius:'20px',
     alignItems:'center',
     display: 'flex',
-    boxShadow: '10px 10px 10px #4b46464b',
-    // borderTop:'5px solid #a1979741',
-    // borderLeft:'5px solid #a1979741',
+    boxShadow: '8px 8px 10px #4b46464b',
     borderBottom:'5px solid #423c3c41',
     borderRight:'5px solid #55505041',
  })
@@ -88,12 +86,12 @@ const UserFunctionLink = styled('a')({
     color: '#695a5ac8',
     fontWeight:'bold',
 })
-const UserInfo =styled('div')({
+export const UserInfo =styled('div')({
     position: 'absolute',
-    boxShadow: '10px 10px 10px #4b46464b',
+    boxShadow: '5px 5px 5px #4b46464b',
     borderBottom:'3px solid #423c3c41',
     borderRight:'3px solid #55505041',
-    top:'-46px',
+    top:'-44px',
     right: '-20px',
     display: 'flex',
     alignItems:'center',
@@ -134,10 +132,8 @@ export default function UserForm({handleModalOpen}) {
         <>  
             <UserFormBox>
                 <ContentLogoBox className='content-logoBox'>
-                    {/* sx={{background:'#86940b4a',paddingBottom:'2px',borderRadius:'15px'}} */}
                     <ContentImageBox className='content-imageBox'>
                         <ContentLogoImage className='content-logo' src='/tilLogo.png' alt=''/>
-                        {/* <ContentLogoText  sx={{animation: {xs:'shadow-pop-tr 0.8s both',lg:'shadow-pop-tr2 0.8s both'},}} variant='p' >TIL</ContentLogoText> */}
                         <ContentLogoDesc className='content-logo-desc'>Things I Love</ContentLogoDesc>
                     </ContentImageBox>   
                 </ContentLogoBox>

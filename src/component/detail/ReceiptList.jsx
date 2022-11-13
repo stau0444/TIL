@@ -28,6 +28,11 @@ const ReceiptLeft=styled('div')({
         color:'gray',
         margin:'3px 0'
     },
+    '& > .comment-total-price':{
+        fontSize:'10px',
+        color:'gray',
+        marginTop:'6px'
+    }
 })
 const ReceiptRight=styled('div')({
     width: '30%',
@@ -62,6 +67,7 @@ export default function ReceiptList({receiptList}) {
                                                     }
                                             </p>
                                         <p className='comment-content'>{r.comment}</p>
+                                        {/* <p className='comment-total-price'>결제금액:</p> */}
                                     </ReceiptLeft>
                                     <ReceiptRight>
                                         <span>{r.createdAt}</span>

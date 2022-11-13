@@ -27,7 +27,6 @@ export default function LoginModal({handleModalOpen}) {
             await axios
                     .post('/api/user/login',{email:emailRef.current.value , pwd:pwdRef.current.value},{headers:headers})        
                     .then((resp)=>{
-                        console.log('resp',resp)
                         dispatch(postLoginSuccess(resp.data));
                         handleModalOpen();
                     })

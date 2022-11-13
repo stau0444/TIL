@@ -12,7 +12,7 @@ const ThingsDetailsBox = styled(Box)({
     margin:'10px auto',
     maxWidth:'410px',
     background: '#eff0e5',
-    boxShadow: '10px 10px 10px #4b46464b',
+    boxShadow: '8px 8px 10px #4b46464b',
     borderRadius:'20px',
     height: '575px',
     padding: '15px',

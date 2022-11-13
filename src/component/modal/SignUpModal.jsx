@@ -28,7 +28,7 @@ export default function SignUpModal({handleModalOpen}) {
         .then((resp)=>{
             setSignUpSuccess(true);
         })
-        .catch((error)=>{console.log(error.resp)});
+        .catch((error)=>{alert(error.response.data)});
         //이메일 중복확인 후 중복시 alert처리
         
     }

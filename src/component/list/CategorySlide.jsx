@@ -77,12 +77,10 @@ export default function CategorySlide() {
             await axios.get(`/api/user/content/search?category=${data.category.name}&sort=${data.sort}`)
                     .then((resp)=>{dispatch(getSearchThing(resp.data.thingList))})
                     .catch((error)=>{
-                        console.log(error);
                         if(error.response.status === 401){
                             alert("로그인 세션이 만료되었습니다. 다시 로그인 해주세요!")
                             dispatch(postLogOut())
                         }
-                        console.log(error);
                     })
         }
         handleSearch();

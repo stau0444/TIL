@@ -1,17 +1,12 @@
 
 import { Box, Grid, Typography, styled } from '@mui/material';
-import { useSelector } from 'react-redux';
 
 const LogoTextGrid = styled(Grid)({
     borderRadius:'20px',
-    
-    padding: "10px",
+    marginBottom:'50px',
     '&>div':{
-        marginBottom:'20px',
-        margin: '0px auto',
-        paddingRight: '130px',
-        maxWidth:'300px',
-        minWidth:'300px',
+        maxWidth:'100%',
+        minWidth:'100%',
     },
 });
 
@@ -45,7 +40,7 @@ const AnimatedLogo = (props)=>{
                     width={props.borderWidth}
                     sx={{
                         animation: {xs:'modal 0.8s both',lg:'modal 0.8s both'},
-                        marginBottom:props.marginBottom
+                        marginBottom:props.marginBottom,
                     }}
                     />
             </>
@@ -55,20 +50,17 @@ const AnimatedLogo = (props)=>{
 
 
 export default function LogoText() {
-    const login = useSelector(state=>state.user.login);
     return( 
         <>
             <LogoTextGrid item  
                 xs={12} 
-                lg={2} 
-                sx={{
-                    marginRight:{lg:login?'30px':'80px'},
-                    marginLeft:{xs:"5px"}
-                }}>
-                <Box>
+                lg={2}
+                sx={{margin:{xs:'0 0 50px 15px',lg:'-50px 20px 0 0'}}}
+                >
+                <Box >
                     <AnimatedLogo text="THINGS" borderWidth="210px"/>
-                    <AnimatedLogo text="I" borderWidth="50px"/>
-                    <AnimatedLogo text="LOVE" borderWidth="150px" marginBottom="20px"/>
+                    <AnimatedLogo text="I" borderWidth="30px"/>
+                    <AnimatedLogo text="LOVE" borderWidth="160px"/>
                 </Box>
             </LogoTextGrid>
         </>

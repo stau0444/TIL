@@ -16,7 +16,7 @@ const ThingsListBox= styled('div')({
     padding: '14px',
     borderRadius:'20px',
     background: '#eff0e5',
-    boxShadow: '10px 10px 10px #4b46464b',
+    boxShadow: '8px 8px 10px #4b46464b',
     borderBottom:'5px solid #423c3c41',
     borderRight:'5px solid #55505041',
 })
