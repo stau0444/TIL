@@ -14,6 +14,7 @@ const DecoBox = styled('div')({
     top:'80px'
 })
 const DecoImg = styled('img')({
+    userDrag: 'none',
     width: "400px",
     background: "whitesmoke"
 })
