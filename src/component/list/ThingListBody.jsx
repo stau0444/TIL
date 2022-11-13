@@ -59,7 +59,7 @@ export default function ThingsListBody({handleModalOpen}) {
           dispatch(getDetailStart());
           await axios.get('/api/user/content/'+id)
           .then((resp)=>{
-            setTimeout(()=>{console.log("sessionexpired",resp.data);dispatch(getDetailSuccess(resp.data))},3000);
+            setTimeout(()=>{dispatch(getDetailSuccess(resp.data))},3000);
           })
           .catch((error)=>{
             if(error.response.status === 401){

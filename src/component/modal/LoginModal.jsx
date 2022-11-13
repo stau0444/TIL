@@ -27,12 +27,13 @@ export default function LoginModal({handleModalOpen}) {
             await axios
                     .post('/api/user/login',{email:emailRef.current.value , pwd:pwdRef.current.value},{headers:headers})        
                     .then((resp)=>{
+                        console.log('resp',resp)
                         dispatch(postLoginSuccess(resp.data));
                         handleModalOpen();
                     })
                     .catch((error)=>{
                         dispatch(postLoginFail());
-                        console.log(error)
+                        alert("아이디 혹은 비밀번호가 잘못되었습니다.")
                     });
         }
         handleLogin();
