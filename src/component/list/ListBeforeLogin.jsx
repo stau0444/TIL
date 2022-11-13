@@ -44,7 +44,7 @@ const TextBtnBox = styled('div')({
 export default function ListBeforeLogin({handleModalOpen}) {
     return(
         <>
-        <ReceiptListBox sx={{minHeight:'460px',borderColor:'#9eac99'}}>
+        <ReceiptListBox className='beforeLogin' sx={{minHeight:'460px',borderColor:'#9eac99'}}>
            <ListBeforeLoginBox>
             <DecoBox>
              <DecoImg className="decoImg" src="deco.gif" alt=""/>
