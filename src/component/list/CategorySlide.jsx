@@ -67,15 +67,16 @@ const SearchOption = styled('div')({
   
 
 export default function CategorySlide() {
-    const categoryList = useSelector(state => state.user.userInfo.categories);
+    
+    const {categories,email} = useSelector(state => state.user.userInfo);
     const dispatch = useDispatch();
     
     const [searchCondition, setSearchCondition] = useState({sort:"" , category:""});
     const handleSearch=(cond)=>{
         async function handleSearch(){
             const data = {...cond}
-            await axios.get(`/api/user/content/search?category=${data.category.name}&sort=${data.sort}`)
-                    .then((resp)=>{dispatch(getSearchThing(resp.data.thingList))})
+            await axios.get(`/api/user/content/search?category=${data.category.name}&sort=${data.sort}&email=${email}`)
+                    .then((resp)=>{console.log('email',email);dispatch(getSearchThing(resp.data.thingList))})
                     .catch((error)=>{
                         if(error.response.status === 401){
                             alert("로그인 세션이 만료되었습니다. 다시 로그인 해주세요!")
@@ -109,7 +110,7 @@ export default function CategorySlide() {
     return(
         <>
                 {
-                    categoryList.length===0?
+                    categories.length===0?
                     <Slide>
                             <CategoryBtn>
                                 카테고리를 추가해주세요
@@ -129,7 +130,7 @@ export default function CategorySlide() {
                                             전체
                         </CategoryBtn>
                         {  
-                            categoryList.map((c,i)=>{
+                            categories.map((c,i)=>{
                             return <>
                                         <CategoryBtn  
                                             sx={{
