@@ -11,7 +11,6 @@ import { useSelector } from 'react-redux';
     display: 'flex',
     alignItems:'center',
     justifyContent:'center',
-    padding:'20px',
     position: 'relative'
 });
 
@@ -30,7 +29,7 @@ export default function Home() {
     return(
         <>
             <HomeContainer container sx={{
-                    marginTop:{xs:'0px',lg:"24px"},
+                    marginTop:{xs:'0px',lg:"10px"},
                 }}>
                 {
                     isModalOpen.isOpen?

@@ -25,7 +25,7 @@ const ThingsListBox= styled('div')({
 export default function ThingsList({handleModalOpen}) {
     return(
         <>
-            <ThingsListGrid item xs={12} lg={4}>
+            <ThingsListGrid sx={{marginRight:{lg:'5px'}}} item xs={12} lg={4}>
                     <UserForm handleModalOpen={handleModalOpen}/>
                     <ThingsListBox>
                         <ThingsListBody handleModalOpen={handleModalOpen}/>

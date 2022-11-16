@@ -1,13 +1,18 @@
 
 :root{
   --doc-height: 100%;
+
 }
 
-html , body , #root {
-  background: rgb(150, 205, 152);
+
+body{
+  background: #d1edd1;
+  padding: 20px;
+  /* background: rgb(193, 244, 195); */
+  /* background: rgba(184, 197, 147, 0.214); */
+  /* background: whitesmoke; */
   /* background: rgb(167, 198, 232); */
-  margin: 0;
-  height: 100vh;
+  
 }
 
 p,h4,h3,h2{

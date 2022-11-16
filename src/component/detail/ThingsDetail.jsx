@@ -14,7 +14,7 @@ const ThingsDetailsBox = styled(Box)({
     background: '#eff0e5',
     boxShadow: '8px 8px 10px #4b46464b',
     borderRadius:'20px',
-    height: '575px',
+    height: '580px',
     padding: '15px',
     borderBottom:'5px solid #423c3c41',
     borderRight:'5px solid #55505041',

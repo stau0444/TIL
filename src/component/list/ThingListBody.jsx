@@ -9,8 +9,8 @@ import ThingListEmpty from './ThingListEmpty';
 
 
 const ThingsListBox = styled('div')({
-  maxHeight: '400px',
-  minHeight: '400px',
+  maxHeight: '410px',
+  minHeight: '410px',
   overflow: 'scroll',
   padding: '0 10px',
   marginTop: '10px',

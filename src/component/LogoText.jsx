@@ -1,6 +1,5 @@
 
 import { Box, Grid, Typography, styled } from '@mui/material';
-
 const LogoTextGrid = styled(Grid)({
     borderRadius:'20px',
     marginBottom:'50px',
@@ -11,8 +10,7 @@ const LogoTextGrid = styled(Grid)({
 });
 
 const TextLine = styled('hr')(({
-    height: "2px",
-    background:"inherit",
+    background:"none",
     border:"none",
     margin: '0',
     boxShadow:'5px 5px 10px #020000',
@@ -22,16 +20,22 @@ const TextLine = styled('hr')(({
 }));
 
 
-
 const AnimatedLogo = (props)=>{
         return  <>
                 <Typography
+                    component={'span'}
                     sx={{
                         animation: {xs:'shadow-pop-tr 0.8s both',lg:'shadow-pop-tr2 0.8s both'},
-                        fontSize: '60px',
-                        color: '#9be8ef',
-                        // color: "#b3ded2",
+                        fontSize: {xs:'60px',sm:'65px'},
+                        transition: 'font-size 0.1s linear',
+                        color: '#13d2e3de',
+                        background: 'palegreen',
+                        padding:'0 15px 0 10px',
+                        borderRadius:'20px',
                         fontFamily: "'Alata', sans-serif",
+                        border:'1px solid #b3ded2',
+                        display: 'inline',
+
                     }}
                     >
                     {props.text}
@@ -40,7 +44,7 @@ const AnimatedLogo = (props)=>{
                     width={props.borderWidth}
                     sx={{
                         animation: {xs:'modal 0.8s both',lg:'modal 0.8s both'},
-                        marginBottom:props.marginBottom,
+                        marginBottom:'5px'
                     }}
                     />
             </>
@@ -55,7 +59,7 @@ export default function LogoText() {
             <LogoTextGrid item  
                 xs={12} 
                 lg={2}
-                sx={{margin:{xs:'0 0 50px 15px',lg:'-50px 20px 0 0'}}}
+                sx={{margin:{xs:'0 0 10px 0px',lg:'-15px 55px 295px 0'}}}
                 >
                 <Box >
                     <AnimatedLogo text="THINGS" borderWidth="210px"/>

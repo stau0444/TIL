@@ -23,7 +23,7 @@ const DecoText = styled('p')({
 const SignUpBtn = styled('button')({
     marginTop:'15px',
     fontSize:'20px',
-    padding: '5px 10px',
+    padding: '5px 20px',
     color: '#64b568',
     cursor: 'pointer',
     border:'1px solid lightgray',
@@ -44,7 +44,7 @@ const TextBtnBox = styled('div')({
 export default function ListBeforeLogin({handleModalOpen}) {
     return(
         <>
-        <ReceiptListBox className='beforeLogin' sx={{minHeight:'460px',borderColor:'#9eac99'}}>
+        <ReceiptListBox className='beforeLogin' sx={{minHeight:'475px',borderColor:'#9eac99'}}>
            <ListBeforeLoginBox>
             <DecoBox>
              <DecoImg className="decoImg" src="deco.gif" alt=""/>

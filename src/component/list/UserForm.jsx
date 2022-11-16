@@ -1,6 +1,6 @@
 import LoginIcon from '@mui/icons-material/Login';
 import { useSelector } from 'react-redux';
-import { styled,  } from '@mui/material';
+import { styled, Box, Typography } from '@mui/material';
 
 
 
@@ -28,21 +28,7 @@ const ContentImageBox =styled('div')({
     marginBottom: '3px',
     marginLeft:'5px'
 })
-const ContentLogoImage =styled('img')({
-    borderRadius: '5px',
-    width: '70px',
-    border: '1px solid #78a150',
-})
 
-const ContentLogoDesc = styled('p')({
-    margin: '0',
-    marginTop: '-3px',
-    fontSize: '5px',
-    color:'#bfce84',
-    // fontFamily: "'Alata', sans-serif",
-    fontFamily: "'Spicy Rice', cursive",
-
-})
 const ContentLoginBox = styled('div')({
     width:'70%',
     
@@ -86,36 +72,7 @@ const UserFunctionLink = styled('a')({
     color: '#695a5ac8',
     fontWeight:'bold',
 })
-export const UserInfo =styled('div')({
-    position: 'absolute',
-    boxShadow: '5px 5px 5px #4b46464b',
-    borderBottom:'3px solid #423c3c41',
-    borderRight:'3px solid #55505041',
-    top:'-44px',
-    right: '-20px',
-    display: 'flex',
-    alignItems:'center',
-    animation: 'swing-in-bottom-bck 1.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both',
-    color: 'gray',
-    borderRadius:'20px',
-    padding:'4px 10px',
-    background: 'palegreen',
-    marginRight:'18px',
-    marginLeft:'3px',
-    '&>.user-thumb':{
-        width: '20px',
-        padding:'3px',
-        borderRadius:'100px',
-        background: 'whitesmoke',
-    },
-    '&>.user-id':{
-        fontFamily: "'Alata', sans-serif",   
-        fontSize:'11px',
-        
-        // fontWeight:'bold',
-        marginRight: '3px',
-    }
-})
+
 const ContentSlogun = styled('div')({
     color: '#695a5ac8',
     display:'flex',
@@ -125,6 +82,46 @@ const ContentSlogun = styled('div')({
     marginTop:'-6px'
 })
 
+export const UserInfo =styled('div')({
+    height: '25px',
+    boxShadow:'inset 3px 3px 5px #423c3c41',
+    display: 'flex',
+    alignItems:'center',
+    color: '#847e7e',
+    justifyContent:'center',
+    borderRadius:'20px',
+    padding:'4px 10px',
+    background: '#d3dad5',
+    '&>.user-thumb':{
+        padding:'3px',
+        borderRadius:'100px',
+        background: 'whitesmoke',
+    },
+    '&>.user-id':{
+        fontFamily: "'Alata', sans-serif",   
+        fontSize:'12px',
+        
+        // fontWeight:'bold',
+        marginRight: '4px',
+    }
+})
+
+const UserInfoBox = ({children})=>{
+    return <Box component={'div'} sx={{
+        animation: 'swing-in-bottom-bck 1.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both',
+        width:'160px',
+        borderRadius:'20px' ,
+        padding:'3px',
+        marginRight:{xs:'10px',sm:'0'},
+        background: '#eff0e5',
+        boxShadow: '3px 5px 5px #4b46464b',
+        borderBottom:'3px solid #423c3c41',
+        borderRight:'3px solid #55505041',
+    }}>
+        {children}
+    </Box>
+}
+
 
 export default function UserForm({handleModalOpen}) {
     const {login,userInfo} = useSelector(state=>state.user);
@@ -133,22 +130,36 @@ export default function UserForm({handleModalOpen}) {
             <UserFormBox>
                 <ContentLogoBox className='content-logoBox'>
                     <ContentImageBox className='content-imageBox'>
-                        <ContentLogoImage className='content-logo' src='/tilLogo.png' alt=''/>
-                        <ContentLogoDesc className='content-logo-desc'>Things I Love</ContentLogoDesc>
+                    {
+                            login?
+                                <UserInfoBox
+                                    children={
+                                        <UserInfo sx={{animation: 'swing-in-bottom-bck 1.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both',fontSize:'12px'}}>
+                                            <p className='user-id'>{userInfo.email}</p>
+                                            <img height="21px" className='user-thumb' src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="" />
+                                        </UserInfo>
+                                    }
+                                />
+                            :
+                            <UserInfoBox
+                                children={
+                                <UserInfo>
+                                    <Typography  sx={{
+                                        fontSize:"11px",
+                                        fontFamily:"'NanumSquare' , san-serif",
+                                        fontWeight:'bold'
+                                        }}>
+                                            회원가입 후 로그인해주세요.
+                                    </Typography>
+                                </UserInfo>
+                                }
+                            />
+                    }
                     </ContentImageBox>   
                 </ContentLogoBox>
                 <ContentLoginBox>
                     <ContentSlogun className='content-slogun'>
                                 <small>내가 좋아하는 것들만 저장해요! 🍔 🌮 🍷  ☕️  🥩</small>
-                                {
-                                        login?
-                                        <UserInfo sx={{right:""}}>
-                                            <p className='user-id'>{userInfo.email}</p>
-                                            <img height="21px" className='user-thumb' src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="" />
-                                        </UserInfo>
-                                        :
-                                        ""
-                                }
                     </ContentSlogun>
                     <LoginBox>
                         {   
@@ -173,7 +184,6 @@ export default function UserForm({handleModalOpen}) {
                                 </LoginLink>
                             </>
                         }
-                        {/* login 이전 ui */}
                     </LoginBox>
                 </ContentLoginBox>
             </UserFormBox>    
