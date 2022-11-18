@@ -24,17 +24,15 @@
 좋아하는 것들을 리스트로 저장할 수 있는 앱입니다 .  리액트와 리덕스를 기반으로 만들어졌고 EC2 인스턴스의 Docker Container로 배포되어 있습니다. 아래 링크에서 앱을 사용해볼 수 있습니다. REST API 방식으로 EC2 인스턴스에 Docker container로 배포되어 있는 Spring-boot API 서버에서 데이터를 받아오고 있으며. Spring-Security form login 방식을 통해 로그인 기능, session을 통한 로그인 유지가 구현되었습니다. 
 
 <br/>
-<br/>
+
 
 > Site URL
 
 <br/>
 
-##### * 테스트 계정  ID : testuser@test.com / pwd : asdasd12!
+### https://til-api.space
 
-<br/>
-
-- https://til-api.space
+###### * 테스트 계정  ID : testuser@test.com / pwd : asdasd12!
 
 <br/>
 
