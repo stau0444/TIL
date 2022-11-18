@@ -48,14 +48,14 @@ Component Design | `Marterial-Design` , `Styled Component` ,` SCSS`
 
 #
 ## 3.프로젝트 구조
-#
+
 
 <img width="517" alt="TilBuildAndDeployFlow" src="https://user-images.githubusercontent.com/51349774/202758185-31986614-dc6c-4ea2-8ab4-8017a5fe875d.png">
 
 
 #
 ## 4.주요 기능 설명
-#
+
 
 #### `카테고리 , 장소 저장 `
 ---
