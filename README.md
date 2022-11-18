@@ -55,6 +55,7 @@ Component Design | `Marterial-Design` , `Styled Component` ,` SCSS`
 
 ## 4.주요 기능 설명
 
+<br/>
 
 #### `카테고리 , 장소 저장 `
 ---
