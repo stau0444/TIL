@@ -34,7 +34,6 @@
 
 <br/>
 
-
 ## 2. 사용 라이브러리
 
 <br/>
@@ -46,14 +45,13 @@ Front-end Stack||
 HTTP client | `Axios 1.1.3`
 Component Design | `Marterial-Design` , `Styled Component` ,` SCSS`
 
-
+<br/>
 
 ## 3.프로젝트 구조
 
-
 <img width="517" alt="TilBuildAndDeployFlow" src="https://user-images.githubusercontent.com/51349774/202758185-31986614-dc6c-4ea2-8ab4-8017a5fe875d.png">
 
-
+<br/>
 
 ## 4.주요 기능 설명
 
