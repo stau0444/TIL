@@ -7,9 +7,9 @@
 <br/>
 [2. 사용 라이브러리](#2사용-라이브러리)
 <br/>
-[3. 주요 기능](#3주요-기능)
+[3. 프로젝트 구조](#3프로젝트-구조)
 <br/>
-[4. 프로젝트 구조](#4프로젝트-구조)
+[4. 주요 기능 설명](#4주요-기능-설명)
 <br/>
 [5. 페이지별 설명](#5페이지별-설명)
 <br/>
@@ -47,7 +47,14 @@ Component Design | `Marterial-Design` , `Styled Component` ,` SCSS`
 
 
 #
-## 3.주요 기능
+## 3.프로젝트 구조
+#
+
+<img width="517" alt="TilBuildAndDeployFlow" src="https://user-images.githubusercontent.com/51349774/202758185-31986614-dc6c-4ea2-8ab4-8017a5fe875d.png">
+
+
+#
+## 4.주요 기능 설명
 #
 
 #### `카테고리 , 장소 저장 `
@@ -84,5 +91,3 @@ Component Design | `Marterial-Design` , `Styled Component` ,` SCSS`
 
 <img width="60%" style="border:1px solid gray" alt="로그인 , 로그아웃" src="https://user-images.githubusercontent.com/51349774/202739227-27827e75-fb83-4f93-9095-2b665ce2fc9f.gif"/>
 <br/>
-
-
