@@ -53,38 +53,38 @@ Component Design | `Marterial-Design` , `Styled Component` ,` SCSS`
 #
 
 #### `카테고리 , 장소 저장 `
-<img width="60%" alt="카테고리장소추가" src="https://user-images.githubusercontent.com/51349774/202737409-bccc475d-488b-4e42-a238-218b765d6944.gif"/>
+<img width="60%" style="border:1px solid gray" alt="카테고리장소추가" src="https://user-images.githubusercontent.com/51349774/202737409-bccc475d-488b-4e42-a238-218b765d6944.gif"/>
 <br/>
 
 #### `카테고리별,정렬 옵션  검색`
-<img width="60%" alt="검색" src="https://user-images.githubusercontent.com/51349774/202738184-fcffae38-286e-4961-9d05-019436975ce3.gif"/>
+<img width="60%" style="border:1px solid gray" alt="검색" src="https://user-images.githubusercontent.com/51349774/202738184-fcffae38-286e-4961-9d05-019436975ce3.gif"/>
 <br/>
 
 
 #### `장소 정보화면`
 
-<img width="60%" alt="장소 정보화면" src="https://user-images.githubusercontent.com/51349774/202738101-931039d5-494b-40bf-bc6d-d265c4d152e1.gif"/>
+<img width="60%" style="border:1px solid gray" alt="장소 정보화면" src="https://user-images.githubusercontent.com/51349774/202738101-931039d5-494b-40bf-bc6d-d265c4d152e1.gif"/>
 <br/>
 
 #### `영수증 등록`
 
-<img width="60%" alt="장소 정보화면" src="https://user-images.githubusercontent.com/51349774/202737749-dbae5e82-c14d-4fc2-9a87-65424d94897e.gif"/>
+<img width="60%" style="border:1px solid gray" alt="장소 정보화면" src="https://user-images.githubusercontent.com/51349774/202737749-dbae5e82-c14d-4fc2-9a87-65424d94897e.gif"/>
 <br/>
 
 
 #### `네이버로 검색`
 
-<img width="60%" alt="네이버링크" src="https://user-images.githubusercontent.com/51349774/202737796-a33e8185-1c77-449e-9098-d528f66fb0c6.gif"/>
+<img width="60%" style="border:1px solid gray" alt="네이버링크" src="https://user-images.githubusercontent.com/51349774/202737796-a33e8185-1c77-449e-9098-d528f66fb0c6.gif"/>
 <br/>
 
 #### `회원가입`
 
-<img width="60%" alt="회원가입" src="https://user-images.githubusercontent.com/51349774/202737899-ff60ec9e-6445-444c-8848-7cf818541001.gif"/>
+<img width="60%" style="border:1px solid gray" alt="회원가입" src="https://user-images.githubusercontent.com/51349774/202737899-ff60ec9e-6445-444c-8848-7cf818541001.gif"/>
 <br/>
 
 #### `로그인 , 로그아웃`
 
-<img width="60%" alt="로그인 , 로그아웃" src="https://user-images.githubusercontent.com/51349774/202739227-27827e75-fb83-4f93-9095-2b665ce2fc9f.gif"/>
+<img width="60%" style="border:1px solid gray" alt="로그인 , 로그아웃" src="https://user-images.githubusercontent.com/51349774/202739227-27827e75-fb83-4f93-9095-2b665ce2fc9f.gif"/>
 <br/>
 
 
