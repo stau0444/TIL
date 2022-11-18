@@ -25,10 +25,11 @@
 
 <br/>
 <br/>
-* 테스트 계정  ID : testuser@test.com / pwd : asdasd12! 
-<br/>
 
 > Site URL
+
+<br/>
+<small> * 테스트 계정  ID : testuser@test.com / pwd : asdasd12! </small>
 
 <br/>
 
