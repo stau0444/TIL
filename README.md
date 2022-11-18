@@ -1,7 +1,6 @@
-#
 # `TIL` (Things I Love) Front-end 
 
-### 목차
+#### 목차
 
 [1. 프로젝트 설명](#1프로젝트-설명 )
 <br/>
@@ -11,16 +10,17 @@
 <br/>
 [4. 주요 기능 설명](#4주요-기능-설명)
 <br/>
-[5. 페이지별 설명](#5페이지별-설명)
-<br/>
+
 
 
 ## 1.프로젝트 설명 
 
 <br/>
+
 <img width="300" style="border-radius:20px" alt="logoImage" src="https://user-images.githubusercontent.com/51349774/202742588-1871ff0d-c0a1-4de6-b5d4-49366c0b069c.png">
+
 <br/>
-<br/>
+
 좋아하는 것들을 리스트로 저장할 수 있는 앱입니다 .  리액트와 리덕스를 기반으로 만들어졌고 EC2 인스턴스의 Docker Container로 배포되어 있습니다. 아래 링크에서 앱을 사용해볼 수 있습니다. REST API 방식으로 EC2 인스턴스에 Docker container로 배포되어 있는 Spring-boot API 서버에서 데이터를 받아오고 있으며. Spring-Security form login 방식을 통해 로그인 기능, session을 통한 로그인 유지가 구현되었습니다. 
 
 <br/>
@@ -87,6 +87,6 @@ Component Design | `Marterial-Design` , `Styled Component` ,` SCSS`
 
 
 #### `로그인 , 로그아웃`
-
+---
 <img width="60%" style="border:1px solid gray" alt="로그인 , 로그아웃" src="https://user-images.githubusercontent.com/51349774/202739227-27827e75-fb83-4f93-9095-2b665ce2fc9f.gif"/>
 <br/>
