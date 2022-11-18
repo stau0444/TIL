@@ -59,7 +59,7 @@ export default function LogoText() {
             <LogoTextGrid item  
                 xs={12} 
                 lg={2}
-                sx={{margin:{xs:'0 0 10px 0px',lg:'-15px 55px 295px 0'}}}
+                sx={{margin:{xs:'0 0 10px 0px',lg:'-15px 55px 265px 0'}}}
                 >
                 <Box >
                     <AnimatedLogo text="THINGS" borderWidth="210px"/>
