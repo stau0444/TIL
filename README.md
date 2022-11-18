@@ -74,5 +74,6 @@ Component Design | `Marterial-Design` , `Styled Component` ,` SCSS`
 
 로그인 , 로그아웃
 
+![로그아웃](https://user-images.githubusercontent.com/51349774/202738551-01858d61-c674-40b8-a62d-6dc5772ddda0.mov)
 
 
