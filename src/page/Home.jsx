@@ -29,7 +29,7 @@ export default function Home() {
     return(
         <>
             <HomeContainer container sx={{
-                    marginTop:{xs:'0px',lg:"10px"},
+                    // marginTop:{xs:'0px',lg:"10px"},
                 }}>
                 {
                     isModalOpen.isOpen?
